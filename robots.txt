@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://n-start-jp.github.io/sitemap.xml
