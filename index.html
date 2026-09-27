@@ -235,6 +235,12 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .mbar .t{background:var(--navy);color:#fff}
   .mbar .m{background:var(--acc);color:#fff}
 }
+
+  .photo{margin:22px 0 6px;border-radius:14px;overflow:hidden;background:#e9edf2}
+  .photo img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+  .photo figcaption{font-size:12px;color:#5b6773;padding:6px 4px 0;text-align:right}
+  .hero .photo{margin:26px 0 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .hero .photo figcaption{color:rgba(255,255,255,.75)}
 </style>
 </head>
 <body>
@@ -260,6 +266,7 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <span class="eyebrow">大阪府富田林市 ｜ 単品・試作から量産まで ｜ 協力工場ネットワークで対応</span>
     <h1>金属加工のこと、<br><span>まるごと相談できる窓口。</span></h1>
     <p class="sub">旋盤・フライス・穴あけ・ねじ加工から、組立・塗装、外注先の手配、検査・梱包出荷まで。「これ、どこに頼めばいい？」を、製造現場で20年働いた代表が窓口になってお引き受けします。</p>
+    <figure class="photo"><img src="img/hero-lathe.jpg" alt="旋盤で金属部品を加工しているところ（イメージ）" loading="eager" width="1600" height="900"><figcaption>旋盤加工のイメージ（写真はイメージです）</figcaption></figure>
     <ul class="promise">
       <li>1個から</li>
       <li>図面がなくてもOK</li>
@@ -296,6 +303,7 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <h2><span class="en">SERVICE</span>できること</h2>
     <p class="lead">「加工だけ」ではありません。加工の前後にある手配・検査・出荷・仕組みづくりまで、製造まわりを一続きでお引き受けします。</p>
+    <figure class="photo"><img src="img/parts-table.jpg" alt="加工を終えた金属部品が作業台に並ぶ様子（イメージ）" loading="lazy" width="1600" height="900"><figcaption>加工品のイメージ（写真はイメージです）</figcaption></figure>
     <div class="grid g4">
       <div class="card"><span class="num">1</span><h3>金属加工</h3><p class="small">単品・試作から量産まで</p>
         <ul><li>旋盤加工（丸物・フランジ・軸物）</li><li>フライス・マシニング加工</li><li>穴あけ・ザグリ・タップ・ねじ加工</li><li>研削、溶接・製缶、板金</li><li>熱処理・表面処理・めっき</li></ul></div>
@@ -319,6 +327,7 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <h2><span class="en">CAPABILITY</span>対応範囲（材質・サイズ・ロット・納期・設備）</h2>
     <p class="lead">当社は自社設備に縛られず、案件ごとに最適な協力工場を選んで手配します。だからこそ、間口を広く持てます。</p>
+    <figure class="photo"><img src="img/packing.jpg" alt="木枠パレットに固定した梱包（イメージ）" loading="lazy" width="1600" height="900"><figcaption>梱包・出荷のイメージ（写真はイメージです）</figcaption></figure>
     <div class="tblwrap">
     <table class="spec">
       <tr><th>対応材質</th><td>
@@ -389,6 +398,7 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <h2><span class="en">QUALITY</span>品質のしくみ</h2>
     <p class="lead">品質は「気をつける」ではなく、文書と記録で回します。小さな会社でも、大手の製造部門と同じ考え方で運用しています。</p>
+    <figure class="photo"><img src="img/inspection.jpg" alt="ノギスで寸法を測る手元（イメージ）" loading="lazy" width="1600" height="900"><figcaption>受入・出荷検査のイメージ（写真はイメージです）</figcaption></figure>
 
     <h3 class="center">受入 → 完了 → 出荷、3段階すべてを当社が検査</h3>
     <div class="flow3">
@@ -435,6 +445,7 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <h2><span class="en">FLOW</span>ご依頼の流れは3ステップ</h2>
     <p class="lead">最初の連絡から納品まで、やり取りの相手はずっと当社です。</p>
+    <figure class="photo"><img src="img/drawing-meeting.jpg" alt="図面を見ながら打合せする手元（イメージ）" loading="lazy" width="1600" height="900"><figcaption>図面の読み合わせのイメージ（写真はイメージです）</figcaption></figure>
     <div class="steps">
       <div class="card"><span class="num acc">1</span><h3>ご相談（無料）</h3><p class="small">電話またはメールで、「何を・いくつ・いつまでに・どこまで（加工だけか、組立や塗装までか）」をお聞きします。図面や写真があればメールに添付してください。</p>
         <ul><li>図面なし・現物のみでもOK</li><li>相談だけで終わっても構いません</li></ul></div>
@@ -472,6 +483,7 @@ footer .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div>
         <blockquote>「どこに頼めばいいか分からない」を、いちばん減らしたい仕事だと思っています。</blockquote>
         <p>工場長をしていたころ、いちばん時間を取られたのは加工そのものではなく、「この図面はどこに頼めば安く、早く、確実か」を考え、頼み先ごとに連絡し、納期を追い、届いた品物を確かめる仕事でした。発注する側の苦労を15年分知っているので、当社はその部分ごと引き受ける窓口になろうと決めました。</p>
+    <figure class="photo"><img src="img/workshop.jpg" alt="整頓された町工場の作業場（イメージ）" loading="lazy" width="1600" height="900"><figcaption>作業場のイメージ（写真はイメージです）</figcaption></figure>
         <p>お客様に大きな設備を見せることはできません。その代わり、受け取った図面を発注側の目で読み、最適な作り方と頼み先を選び、届いた品物を自分の手で検査してからお渡しします。できることは引き受け、できないことは最初にお伝えします。まずは一度、お話を聞かせてください。</p>
       </div>
     </div>
