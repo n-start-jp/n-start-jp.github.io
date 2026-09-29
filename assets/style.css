@@ -399,6 +399,7 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
 .needs-box .note{margin-bottom:24px}
 .needs-box .needs-grid{grid-template-columns:repeat(4,1fr)}
 .rel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.works-3{grid-template-columns:repeat(3,1fr)}
 .nf{padding:200px 0 140px;text-align:center}
 .nf .en{font-family:var(--en);font-size:120px;font-weight:700;line-height:1;color:var(--key)}
 .nf h1{font-size:22px;font-weight:900;margin:18px 0 12px}
@@ -430,6 +431,7 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
   .sub-sec{padding:64px 0}
   .links{grid-template-columns:1fr 1fr;gap:8px}
   .links a{min-height:110px;padding:18px 14px 14px;font-size:14px}
+  .works-3{grid-template-columns:1fr 1fr}
   .cmp,.cmp thead,.cmp tbody,.cmp tr,.cmp th,.cmp td{font-size:13px}
   .cmp th,.cmp td{padding:12px 10px}
   .cmp tbody th{width:84px}
