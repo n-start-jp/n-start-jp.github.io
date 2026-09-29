@@ -82,8 +82,14 @@ FOOTER = f"""<footer>
 
 <script src="/assets/main.js" defer></script>"""
 
-HEAD_LINKS = """<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+SITE_NAME = "N.Start 加工事業部"
+
+HEAD_LINKS = f"""<meta property="og:site_name" content="{SITE_NAME}">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/assets/favicon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -501,14 +507,18 @@ def build_index():
     s = re.sub(r'<link rel="preconnect"[^>]*>\s*', "", s)
     s = re.sub(r'<link href="https://fonts.googleapis.com[^>]*>\s*', "", s)
     s = re.sub(r'<link rel="(icon|apple-touch-icon|stylesheet)"[^>]*>\s*', "", s)
+    s = re.sub(r'<meta property="og:site_name"[^>]*>\s*', "", s)
     s = s.replace("</head>", HEAD_LINKS + "\n</head>", 1)
     # タイトル・説明
     t = "金属加工の相談窓口｜1個から・図面なしOK｜大阪・富田林 N.Start加工事業部"
     s = re.sub(r"<title>.*?</title>", f"<title>{t}</title>", s)
     s = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{t}">', s)
     # 構造化データ
-    ld = {"@context": "https://schema.org", **ORG,
-          "description": "旋盤・フライス・穴あけ・ねじ加工から組立・塗装、外注先の手配、検査・梱包出荷まで。金属加工と製造まわりの困りごとを1個から相談できる窓口です。"}
+    ld = {"@context": "https://schema.org", "@graph": [
+          {"@type": "WebSite", "@id": BASE + "/#website", "name": SITE_NAME,
+           "alternateName": ["株式会社N.Start 加工事業部", "エヌスタート 加工事業部", "N.Start加工事業部"],
+           "url": BASE + "/", "inLanguage": "ja", "publisher": {"@id": BASE + "/#org"}},
+          {**ORG, "description": "旋盤・フライス・穴あけ・ねじ加工から組立・塗装、外注先の手配、検査・梱包出荷まで。金属加工と製造まわりの困りごとを1個から相談できる窓口です。"}]}
     s = re.sub(r'<script type="application/ld\+json">.*?</script>',
                f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>', s, count=1, flags=re.S)
     # ヘッダー・フッター・固定バー・スクリプト
