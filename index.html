@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="blue">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,313 +16,366 @@
 <meta name="description" content="旋盤・フライス・穴あけ・ねじ加工から組立・塗装、外注先の手配、検査・梱包出荷まで。金属加工と製造まわりの困りごとを1個から相談できる窓口です。図面がなくても、専門用語が分からなくても大丈夫。お見積り無料。大阪府富田林市・株式会社N.Start加工事業部。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f4f3ef;--paper2:#ebe9e3;--white:#fbfaf8;
-  --ink:#131518;--sub:#5a5f66;--faint:#8b8f95;
-  --line:#cdc9c0;--line2:#dfdcd5;
-  --dark:#16181b;--dark2:#0e0f11;--dline:#34373c;--dsub:#a3a7ad;
-  --acc:#cf4417;--acc-d:#b03810;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  --ink:#1a1d21;--sub:#555c66;--line:#dde1e6;--gray:#f1f3f5;--white:#fff;
+  --en:"Oswald","Arial Narrow",sans-serif;
+  --jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
 }
+/* 配色：blue（標準）／black／green */
+html[data-theme="blue"]{--main:#0b3a7e;--main-d:#06254f;--rgb:8,40,90;--key:#0b3a7e;--btn:#0b3a7e;--btn-h:#06254f;--btn-fg:#fff;--hl:#2c7be5;--hl-t:#1f63c4;--hero-en:#8fc0ff;--soft:#e9f0fa}
+html[data-theme="black"]{--main:#17191c;--main-d:#0c0d0f;--rgb:18,19,22;--key:#17191c;--btn:#f5b800;--btn-h:#ffc933;--btn-fg:#17191c;--hl:#f5b800;--hl-t:#a87c00;--hero-en:#f5b800;--soft:#f6f0dc}
+html[data-theme="green"]{--main:#0f4a3a;--main-d:#093228;--rgb:10,46,36;--key:#0f4a3a;--btn:#0f4a3a;--btn-h:#093228;--btn-fg:#fff;--hl:#2e9c74;--hl-t:#1f7d5b;--hero-en:#8fe0bf;--soft:#e7f3ee}
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.9;font-size:16px;letter-spacing:.02em;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+body{font-family:var(--jp);color:var(--ink);background:var(--white);line-height:1.85;font-size:16px;-webkit-text-size-adjust:100%}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
-ul{list-style:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
-.mono{font-family:var(--mono);letter-spacing:.04em}
+ul,ol{list-style:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
 
-/* ---------- header ---------- */
-header{position:sticky;top:0;z-index:50;background:rgba(244,243,239,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.hd{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
-.brand{display:flex;align-items:baseline;gap:12px;white-space:nowrap}
-.brand b{font-size:19px;font-weight:900;letter-spacing:.01em}
-.brand span{font-size:13px;font-weight:500;color:var(--sub);padding-left:12px;border-left:1px solid var(--line)}
-.gnav{display:flex;gap:28px;font-size:13px;font-weight:500}
-.gnav a{color:var(--sub);transition:color .15s}
-.gnav a:hover{color:var(--ink)}
-.hd-r{display:flex;align-items:center;gap:20px}
-.hd-tel{font-family:var(--mono);font-size:15px;font-weight:500;white-space:nowrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;font-size:14px;font-weight:700;letter-spacing:.06em;transition:background .15s,color .15s,border-color .15s;border:1px solid transparent;cursor:pointer;white-space:nowrap}
-.btn:after{content:"→";font-family:var(--mono);font-weight:400}
-.btn-ink{background:var(--ink);color:#fff}
-.btn-ink:hover{background:var(--acc)}
-.btn-acc{background:var(--acc);color:#fff}
-.btn-acc:hover{background:var(--acc-d)}
-.btn-ghost{border-color:currentColor}
-.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
-.btn-sm{padding:10px 18px;font-size:13px}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:#fff;box-shadow:0 1px 0 var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px;max-width:none;padding-right:0}
+.logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.logo i{flex:none;width:40px;height:40px;background:var(--main);color:#fff;font-style:normal;font-family:var(--en);font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center}
+.logo b{display:block;font-size:17px;font-weight:900;line-height:1.25}
+.logo small{display:block;font-size:11px;color:var(--sub);font-weight:500;line-height:1.3}
+.gnav{display:flex;gap:30px;font-size:14px;font-weight:700}
+.gnav a{position:relative;padding:6px 0}
+.gnav a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--hl);transition:right .2s}
+.gnav a:hover:after{right:0}
+.hd-r{display:flex;align-items:center;gap:24px}
+.hd-tel{text-align:right;line-height:1.2;white-space:nowrap}
+.hd-tel b{display:block;font-family:var(--en);font-size:24px;font-weight:600;color:var(--key);letter-spacing:.02em}
+.hd-tel small{font-size:11px;color:var(--sub)}
+.hd-btn{display:flex;align-items:center;height:76px;padding:0 30px;background:var(--btn);color:var(--btn-fg);font-weight:700;font-size:14px;transition:background .2s}
+.hd-btn:hover{background:var(--btn-h)}
 
-/* ---------- hero ---------- */
-.hero{padding:72px 0 0}
-.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
-.kicker{font-family:var(--mono);font-size:12px;color:var(--sub);letter-spacing:.12em;margin-bottom:28px}
-.kicker:before{content:"";display:inline-block;vertical-align:middle;width:28px;height:1px;background:var(--acc);margin-right:12px}
-.hero h1{font-size:clamp(34px,4.6vw,60px);font-weight:900;line-height:1.32;letter-spacing:.02em;margin-bottom:32px}
-.hero h1 em{font-style:normal;color:var(--acc)}
-.hero .sub{font-size:16px;color:var(--sub);max-width:520px;margin-bottom:40px}
-.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:28px}
-.hero-tel{display:flex;flex-direction:column;line-height:1.3}
-.hero-tel small{font-size:11px;color:var(--faint);letter-spacing:.08em}
-.hero-tel b{font-family:var(--mono);font-size:24px;font-weight:500;letter-spacing:.02em}
-.hero-img{position:relative;margin:0}
-.hero-img img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:62% center;filter:saturate(.55) contrast(1.05)}
-.hero-img:before,.hero-img:after{content:"";position:absolute;width:18px;height:18px;border-color:var(--ink);border-style:solid;z-index:1}
-.hero-img:before{top:-10px;left:-10px;border-width:1px 0 0 1px}
-.hero-img:after{bottom:-10px;right:-10px;border-width:0 1px 1px 0}
-.hero-img figcaption{position:absolute;left:0;bottom:-28px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-width:250px;padding:18px 30px;font-weight:700;font-size:15px;transition:.2s;border:2px solid transparent}
+.btn:after{content:"";width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg)}
+.btn-main{background:var(--btn);color:var(--btn-fg)}
+.btn-main:hover{background:var(--btn-h)}
+.btn-white{background:#fff;color:var(--main)}
+.btn-white:hover{background:var(--soft)}
+.btn-key{background:var(--btn);color:var(--btn-fg)}
+html[data-theme="blue"] .btn-key,html[data-theme="green"] .btn-key{background:#fff;color:var(--main)}
+.btn-outline{border-color:#fff;color:#fff}
+.btn-outline:hover{background:#fff;color:var(--main)}
 
-/* title block (図面の表題欄) */
-.tblock{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink);margin-top:72px;background:var(--white)}
-.tblock div{padding:18px 22px;border-right:1px solid var(--ink)}
-.tblock div:last-child{border-right:0}
-.tblock dt{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;margin-bottom:4px}
-.tblock dd{font-size:15px;font-weight:700;line-height:1.5}
+/* hero */
+.hero{position:relative;min-height:720px;height:100vh;max-height:880px;color:#fff;display:flex;align-items:center;overflow:hidden;background:var(--main-d)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(var(--rgb),.94) 0%,rgba(var(--rgb),.8) 40%,rgba(var(--rgb),.15) 80%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:40px}
+.hero-en{font-family:var(--en);font-size:15px;font-weight:600;letter-spacing:.24em;color:var(--hero-en);margin-bottom:22px}
+.hero h1{font-size:clamp(34px,4.8vw,62px);font-weight:900;line-height:1.35;letter-spacing:.03em;margin-bottom:26px}
+.hero .sub{font-size:17px;max-width:560px;color:rgba(255,255,255,.9);margin-bottom:40px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:16px}
+.hero-big{position:absolute;right:-10px;bottom:90px;z-index:1;font-family:var(--en);font-weight:700;font-size:clamp(90px,14vw,210px);line-height:1;color:rgba(255,255,255,.07);letter-spacing:.02em;white-space:nowrap;pointer-events:none}
 
-/* ---------- section scaffold ---------- */
-section{padding:120px 0}
-.row{display:grid;grid-template-columns:240px 1fr;gap:56px}
-.idx{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--sub);position:sticky;top:100px;align-self:start;padding-top:14px;border-top:1px solid var(--ink)}
-.idx b{display:block;font-size:13px;font-weight:500;color:var(--acc);margin-bottom:2px}
-h2{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.4;letter-spacing:.03em;margin-bottom:24px}
-.intro{color:var(--sub);max-width:640px;margin-bottom:56px}
-h3{font-size:18px;font-weight:700;line-height:1.5}
+/* feature band */
+.feat{position:relative;z-index:3;margin-top:-70px}
+.feat ul{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.feat li{padding:30px 28px;border-right:1px solid var(--line)}
+.feat li:last-child{border-right:0}
+.feat b{display:block;font-family:var(--en);font-size:46px;font-weight:600;line-height:1;color:var(--key);margin-bottom:10px}
+.feat b small{font-family:var(--jp);font-size:16px;font-weight:900;margin-left:4px}
+.feat span{font-size:14px;font-weight:700;line-height:1.6;display:block}
+
+/* section title */
+section{padding:110px 0}
+.bg-gray{background:var(--gray)}
+.sec-first{background:var(--gray);padding-top:170px;margin-top:-70px}
+.ttl{margin-bottom:48px}
+.ttl .en{display:block;font-family:var(--en);font-weight:700;font-size:clamp(46px,6vw,76px);line-height:1;color:var(--key);letter-spacing:.02em;text-transform:uppercase}
+.ttl h2{display:flex;align-items:center;gap:14px;font-size:18px;font-weight:900;margin-top:14px;letter-spacing:.06em}
+.ttl h2:before{content:"";width:36px;height:3px;background:var(--hl)}
+.ttl-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.ttl-row .ttl{margin-bottom:0}
+.lead{font-size:16px;color:var(--sub)}
+.ttl.center{text-align:center}
+.ttl.center h2{justify-content:center}
 .note{font-size:13px;color:var(--sub)}
-.rule{border-top:1px solid var(--line)}
 
-/* ---------- 00 cases ---------- */
-.cases{padding:120px 0 0}
-.case-list{border-top:1px solid var(--ink)}
-.case-list li{display:grid;grid-template-columns:56px 1.15fr 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.case-list .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
-.case-list h3{font-size:17px}
-.case-list p{font-size:14px;color:var(--sub)}
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cases li{background:#fff;padding:34px 30px 32px;border-top:4px solid var(--main)}
+.cases .n{font-family:var(--en);font-weight:600;font-size:14px;color:var(--hl-t);letter-spacing:.14em;display:block;margin-bottom:12px}
+.cases h3{font-size:18px;font-weight:900;line-height:1.55;margin-bottom:12px}
+.cases p{font-size:14px;color:var(--sub)}
 
-/* ---------- 01 service ---------- */
-.svc{border-top:1px solid var(--ink)}
-.svc li{display:grid;grid-template-columns:88px 1fr 1.3fr;gap:24px;padding:36px 0;border-bottom:1px solid var(--line)}
-.svc .n{font-family:var(--mono);font-size:34px;font-weight:400;line-height:1;color:var(--acc)}
-.svc h3{font-size:20px;margin-bottom:6px}
-.svc .cap{font-size:13px;color:var(--sub)}
-.svc .items{font-size:14px;line-height:2}
-.svc .items span{display:block;padding-left:18px;position:relative}
-.svc .items span:before{content:"";position:absolute;left:0;top:1em;width:8px;height:1px;background:var(--ink)}
-.band-img{margin:72px 0 0;position:relative}
-.band-img img{width:100%;aspect-ratio:21/9;object-fit:cover;filter:saturate(.5) contrast(1.05)}
-.proc{margin-top:64px}
-.proc h3{font-size:15px;margin-bottom:18px}
-.proc ul{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.proc li{font-size:14px;padding:12px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
+/* services */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.svc li{border:1px solid var(--line);padding:40px 40px 36px;position:relative;background:#fff}
+.svc .n{position:absolute;top:26px;right:34px;font-family:var(--en);font-size:68px;font-weight:700;line-height:1;color:var(--soft)}
+.svc h3{font-size:22px;font-weight:900;margin-bottom:4px;position:relative}
+.svc .cap{font-size:13px;font-weight:700;color:var(--hl-t);margin-bottom:20px;position:relative}
+.svc .items span{display:block;font-size:15px;padding:9px 0 9px 22px;border-bottom:1px dashed var(--line);position:relative}
+.svc .items span:last-child{border-bottom:0}
+.svc .items span:before{content:"";position:absolute;left:2px;top:19px;width:8px;height:8px;background:var(--main)}
+.proc{margin-top:56px;background:var(--gray);padding:36px 40px}
+.proc h3{font-size:17px;font-weight:900;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{background:#fff;border:1px solid var(--line);padding:6px 16px;font-size:14px;font-weight:500}
 .proc .note{margin-top:16px}
 
-/* ---------- 02 spec ---------- */
-.spec{border-top:1px solid var(--ink)}
-.spec>div{display:grid;grid-template-columns:180px 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--line)}
-.spec dt{font-weight:700;font-size:15px}
-.spec dt small{display:block;font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400;letter-spacing:.1em}
-.spec dd{font-size:15px}
-.spec dd .note{display:block;margin-top:8px}
-.mats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
-.mats span{font-size:13px;border:1px solid var(--line);background:var(--white);padding:4px 12px}
-.spec b{font-weight:700}
+/* photo banner */
+.banner{position:relative;height:440px;overflow:hidden;background:var(--main-d);color:#fff;display:flex;align-items:center}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banner:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(var(--rgb),.85) 0%,rgba(var(--rgb),.35) 70%)}
+.banner .wrap{position:relative;z-index:2;width:100%}
+.banner .en{font-family:var(--en);font-size:15px;letter-spacing:.24em;font-weight:600;margin-bottom:14px;color:var(--hero-en)}
+.banner h2{font-size:clamp(26px,3.4vw,44px);font-weight:900;line-height:1.5;letter-spacing:.04em}
 
-/* ---------- 03 works ---------- */
-.works{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--line)}
-.works div{padding:26px 22px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);min-height:170px}
-.works .n{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;display:block;margin-bottom:28px}
-.works h3{font-size:16px;margin-bottom:6px}
-.works p{font-size:13px;color:var(--sub);line-height:1.8}
-.works-note{margin-top:20px}
+/* spec */
+.spec{width:100%;border-collapse:collapse;background:#fff}
+.spec th,.spec td{padding:24px 28px;border:1px solid var(--line);vertical-align:top;text-align:left;font-size:15px}
+.spec th{width:220px;background:var(--main);color:#fff;font-weight:700;border-color:rgba(255,255,255,.18)}
+.spec th small{display:block;font-family:var(--en);font-size:12px;letter-spacing:.14em;opacity:.7;font-weight:500}
+.spec td .note{display:block;margin-top:8px}
+.mats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.mats span{background:var(--soft);padding:4px 12px;font-size:13px;font-weight:700}
 
-/* ---------- cta band ---------- */
-.cta-band{background:var(--dark);color:#fff;padding:88px 0}
-.cta-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:end}
-.cta-band h2{margin-bottom:16px}
-.cta-band p{color:var(--dsub);font-size:15px}
-.cta-act{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
-.cta-act .tel{font-family:var(--mono);font-size:34px;font-weight:400;line-height:1.1}
-.cta-act .tel small{display:block;font-family:var(--sans);font-size:12px;color:var(--dsub);margin-bottom:6px}
+/* works */
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.works div{background:#fff;padding:28px 24px 26px;position:relative}
+.works div:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hl)}
+.works .n{font-family:var(--en);font-size:30px;font-weight:600;line-height:1;color:#c9ced5;display:block;margin-bottom:14px}
+.works h3{font-size:17px;font-weight:900;margin-bottom:6px}
+.works p{font-size:13px;color:var(--sub);line-height:1.75}
+.works-note{margin-top:24px;text-align:center}
 
-/* ---------- 04 principles ---------- */
-.pr{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
-.pr div{padding:40px 40px 44px 0;border-bottom:1px solid var(--line)}
-.pr div:nth-child(2n){padding:40px 0 44px 40px;border-left:1px solid var(--line)}
-.pr .n{font-family:var(--mono);font-size:12px;color:var(--acc);letter-spacing:.1em;display:block;margin-bottom:18px}
-.pr h3{font-size:19px;margin-bottom:14px}
+/* cta */
+.cta{background:var(--main);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.cta:after{content:"CONTACT";position:absolute;right:-20px;bottom:-36px;font-family:var(--en);font-weight:700;font-size:180px;line-height:1;color:rgba(255,255,255,.06)}
+.cta .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.cta h2{font-size:clamp(24px,2.8vw,34px);font-weight:900;line-height:1.5;margin-bottom:12px}
+.cta p{color:rgba(255,255,255,.82)}
+.cta-box{display:flex;flex-direction:column;gap:14px}
+.cta-tel{display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);padding:16px 24px}
+.cta-tel small{font-size:12px;opacity:.8;line-height:1.6}
+.cta-tel b{font-family:var(--en);font-size:34px;font-weight:600;letter-spacing:.02em;line-height:1.1}
+.cta .btn{width:100%}
+
+/* strength */
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pr li{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:36px 36px 34px;background:#fff;border:1px solid var(--line)}
+.pr .n{font-family:var(--en);font-size:62px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--key)}
+.pr h3{font-size:19px;font-weight:900;line-height:1.55;margin-bottom:12px}
 .pr p{font-size:15px;color:var(--sub)}
 
-/* ---------- 05 quality ---------- */
-.q-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:80px}
-.q-split img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.5) contrast(1.05)}
-.stages{border-top:1px solid var(--ink)}
-.stages li{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
-.stages .n{font-family:var(--mono);font-size:12px;color:var(--acc);padding-top:4px}
-.stages b{display:block;font-size:18px;margin-bottom:4px}
-.stages p{font-size:14px;color:var(--sub)}
-.sub-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:12px;margin:0 0 0}
-.sub-h h3{font-size:17px}
-.sub-h span{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em}
-.checks{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;margin-bottom:12px}
-.checks li{display:grid;grid-template-columns:40px 1fr;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
-.checks .n{font-family:var(--mono);font-size:12px;color:var(--faint);padding-top:3px}
-.q-note{margin-bottom:72px}
-.q-cols{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
-.docs li{padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:14px}
-.docs li:before{content:"";flex:none;width:10px;height:13px;border:1px solid var(--ink);margin-top:7px}
-.q-detail>div{padding:18px 0 20px;border-bottom:1px solid var(--line)}
-.q-detail h4{font-size:15px;margin-bottom:4px}
+/* quality */
+.q-top{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:72px}
+.q-top .ttl{margin-bottom:28px}
+.q-top img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.q-h{font-size:19px;font-weight:900;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.q-h:before{content:"";flex:none;width:6px;height:22px;background:var(--hl)}
+.arrows{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:64px}
+.arrows div{background:var(--main);color:#fff;padding:24px 44px 24px 44px;clip-path:polygon(0 0,calc(100% - 24px) 0,100% 50%,calc(100% - 24px) 100%,0 100%,24px 50%)}
+.arrows div:first-child{clip-path:polygon(0 0,calc(100% - 24px) 0,100% 50%,calc(100% - 24px) 100%,0 100%);padding-left:28px}
+.arrows small{display:block;font-family:var(--en);font-size:12px;letter-spacing:.16em;color:var(--hero-en)}
+.arrows b{display:block;font-size:20px;font-weight:900;margin-bottom:6px}
+.arrows p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.85)}
+.checks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.checks li{background:#fff;border:1px solid var(--line);padding:18px 18px 16px;font-size:14px;font-weight:700;line-height:1.6}
+.checks li span{display:block;font-family:var(--en);font-size:22px;font-weight:600;color:var(--key);line-height:1;margin-bottom:8px}
+.q-note{margin-bottom:64px}
+.q-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.q-box{background:#fff;border:1px solid var(--line);padding:32px 34px}
+.docs li{padding:12px 0 12px 28px;border-bottom:1px solid var(--line);font-size:15px;font-weight:500;position:relative}
+.docs li:last-child{border-bottom:0}
+.docs li:before{content:"";position:absolute;left:0;top:17px;width:14px;height:17px;border:2px solid var(--key)}
+.q-detail>div{padding:12px 0 14px;border-bottom:1px solid var(--line)}
+.q-detail>div:last-child{border-bottom:0}
+.q-detail h4{font-size:15px;font-weight:900;margin-bottom:2px}
 .q-detail p{font-size:14px;color:var(--sub)}
-.honest{margin-top:56px;padding:24px 28px;border-left:3px solid var(--acc);background:var(--white);font-size:15px}
-.honest b{display:block;margin-bottom:4px}
+.honest{margin-top:28px;background:var(--main);color:#fff;padding:26px 34px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.honest b{font-size:15px;font-weight:900;white-space:nowrap;padding-right:24px;border-right:1px solid rgba(255,255,255,.35)}
+.honest p{font-size:14px;color:rgba(255,255,255,.88)}
 
-/* ---------- 06 flow ---------- */
-.flow-split{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
-.flow-split img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.5) contrast(1.05)}
-.steps{border-top:1px solid var(--ink);counter-reset:s}
-.steps li{padding:30px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:12px}
-.steps .n{font-family:var(--mono);font-size:30px;line-height:1;color:var(--acc)}
-.steps h3{margin-bottom:8px}
+/* flow */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:72px}
+.steps li{position:relative;background:#fff;border:1px solid var(--line);padding:0 30px 30px}
+.steps li:not(:last-child):after{content:"";position:absolute;right:-30px;top:50%;border-left:14px solid var(--hl);border-top:12px solid transparent;border-bottom:12px solid transparent;transform:translateY(-50%)}
+.steps .n{display:inline-block;background:var(--main);color:#fff;font-family:var(--en);font-weight:600;font-size:14px;letter-spacing:.14em;padding:8px 16px;margin-bottom:22px}
+.steps h3{font-size:19px;font-weight:900;margin-bottom:10px}
 .steps p{font-size:14px;color:var(--sub)}
-.steps .pt{margin-top:10px;font-size:13px}
-.steps .pt span{display:block;padding-left:18px;position:relative}
-.steps .pt span:before{content:"";position:absolute;left:0;top:.95em;width:8px;height:1px;background:var(--ink)}
-.needs{margin-top:88px}
-.needs-grid{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line)}
-.needs-grid div{padding:24px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
-.needs-grid b{display:block;font-size:20px;font-weight:900;margin-bottom:6px}
+.steps .pt{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.steps .pt span{display:block;font-size:13px;font-weight:700;padding-left:20px;position:relative;color:var(--ink)}
+.steps .pt span:before{content:"";position:absolute;left:0;top:.55em;width:10px;height:6px;border-left:2px solid var(--hl);border-bottom:2px solid var(--hl);transform:rotate(-45deg)}
+.needs{display:grid;grid-template-columns:420px 1fr;background:var(--soft)}
+.needs .ph img{width:100%;height:100%;object-fit:cover;min-height:300px}
+.needs .bd{padding:44px 48px}
+.needs h3{font-size:20px;font-weight:900;margin-bottom:6px}
+.needs .note{margin-bottom:24px}
+.needs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.needs-grid div{background:#fff;padding:18px 20px}
+.needs-grid b{display:block;font-size:18px;font-weight:900;color:var(--key)}
 .needs-grid span{font-size:13px;color:var(--sub)}
-.needs .note{margin-top:14px}
 
-/* ---------- 07 message ---------- */
-.msg-band{position:relative;color:#fff;padding:0;background:var(--dark2)}
-.msg-band img{width:100%;height:520px;object-fit:cover;opacity:.38;filter:grayscale(1) contrast(1.1)}
-.msg-band .quote{position:absolute;inset:0;display:flex;align-items:center}
-.msg-band .quote .wrap{width:100%}
-.msg-band blockquote{font-size:clamp(24px,3.2vw,42px);font-weight:900;line-height:1.55;letter-spacing:.03em;max-width:820px}
-.msg-band cite{display:block;font-style:normal;font-size:13px;font-weight:500;color:var(--dsub);margin-top:28px;letter-spacing:.08em}
-.profile{display:grid;grid-template-columns:1fr 1.5fr;gap:56px}
-.profile .name{font-size:28px;font-weight:900;letter-spacing:.08em;margin:6px 0 24px}
-.profile .role{font-size:13px;color:var(--sub)}
-.career li{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;display:grid;grid-template-columns:24px 1fr}
-.career li:first-child{border-top:1px solid var(--ink)}
-.career li:before{content:"—";color:var(--acc)}
-.profile .txt p{margin-bottom:22px;font-size:16px;line-height:2.05}
+/* message */
+.msg{display:grid;grid-template-columns:1fr 1fr;min-height:640px;background:var(--main-d);color:#fff}
+.msg .ph{position:relative}
+.msg .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.msg .bd{padding:96px 6vw 90px 64px}
+.msg .ttl{margin-bottom:36px}
+.msg .ttl .en{color:#fff}
+.msg blockquote{font-size:clamp(22px,2.2vw,28px);font-weight:900;line-height:1.65;margin-bottom:28px}
+.msg p{font-size:15px;color:rgba(255,255,255,.82);margin-bottom:18px;line-height:2}
+.msg .sign{margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.25)}
+.msg .sign small{display:block;font-size:12px;opacity:.75}
+.msg .sign b{display:block;font-size:24px;font-weight:900;letter-spacing:.1em;margin:4px 0 14px}
+.msg .sign li{font-size:13px;color:rgba(255,255,255,.8);padding-left:16px;position:relative;line-height:1.9}
+.msg .sign li:before{content:"";position:absolute;left:0;top:.9em;width:8px;height:2px;background:var(--hl)}
 
-/* ---------- 08 faq ---------- */
-.faq{border-top:1px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:48px 1fr 24px;padding:22px 0;font-weight:700;font-size:16px;align-items:baseline}
+/* faq */
+.faq{max-width:920px;margin:0 auto}
+.faq details{background:#fff;margin-bottom:12px;border:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:44px 1fr 24px;gap:16px;align-items:center;padding:18px 24px;font-weight:700;font-size:16px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary:before{content:"Q";font-family:var(--mono);font-weight:400;color:var(--acc);font-size:14px}
-.faq summary:after{content:"+";font-family:var(--mono);font-weight:400;font-size:20px;text-align:right;line-height:1}
-.faq details[open] summary:after{content:"−"}
-.faq .a{display:grid;grid-template-columns:48px 1fr;padding:0 24px 26px 0;font-size:15px;color:var(--sub)}
-.faq .a:before{content:"A";font-family:var(--mono);color:var(--faint);font-size:14px}
+.faq summary:before{content:"Q";width:44px;height:44px;background:var(--main);color:#fff;font-family:var(--en);font-weight:600;font-size:20px;display:flex;align-items:center;justify-content:center}
+.faq summary:after{content:"";width:10px;height:10px;border-right:2px solid var(--key);border-bottom:2px solid var(--key);transform:rotate(45deg);justify-self:center;transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(-135deg)}
+.faq .a{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:0 24px 24px;font-size:15px;color:var(--sub)}
+.faq .a:before{content:"A";width:44px;height:44px;border:2px solid var(--key);color:var(--key);font-family:var(--en);font-weight:600;font-size:20px;display:flex;align-items:center;justify-content:center}
+.faq .a p{padding-top:8px}
 
-/* ---------- 09 company ---------- */
-.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.co h3{font-size:15px;padding-bottom:12px;border-bottom:1px solid var(--ink)}
-.co dl>div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
-.co dt{color:var(--sub)}
-.co a{border-bottom:1px solid var(--line)}
+/* company */
+.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.co h3{font-size:19px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.co h3:before{content:"";width:6px;height:22px;background:var(--hl)}
+.co table{width:100%;border-collapse:collapse;background:#fff}
+.co th,.co td{padding:16px 20px;border-bottom:1px solid var(--line);font-size:14px;text-align:left;vertical-align:top}
+.co tr:first-child th,.co tr:first-child td{border-top:2px solid var(--main)}
+.co th{width:120px;background:var(--gray);font-weight:700;white-space:nowrap}
+.co a{color:var(--key);font-weight:700}
 
-/* ---------- contact ---------- */
-.contact{background:var(--dark);color:#fff}
-.contact .idx{border-top-color:#fff;color:var(--dsub)}
-.contact .intro{color:var(--dsub)}
-.c-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--dline)}
-.c-grid>div{padding:36px 36px 40px 0;border-bottom:1px solid var(--dline)}
-.c-grid>div+div{padding:36px 0 40px 36px;border-left:1px solid var(--dline)}
-.c-grid .lb{font-family:var(--mono);font-size:12px;color:var(--dsub);letter-spacing:.12em;margin-bottom:14px}
-.c-grid .big{display:block;font-family:var(--mono);font-size:clamp(28px,3.4vw,44px);line-height:1.15;margin-bottom:14px;word-break:break-all}
-.c-grid .big.mail{font-size:clamp(22px,2.4vw,30px)}
-.c-grid p{font-size:14px;color:var(--dsub);margin-bottom:22px}
-.tpl{margin-top:56px;border:1px solid var(--dline);padding:28px 32px}
-.tpl h3{font-size:15px;margin-bottom:14px}
-.tpl pre{white-space:pre-wrap;font-family:var(--mono);font-size:13px;line-height:2;color:#d6d8db;letter-spacing:.02em}
-.tpl .note{color:var(--dsub);margin-top:14px}
+/* contact */
+.c-lead{text-align:center;margin:-16px auto 44px;max-width:700px}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.c-box{background:#fff;padding:44px 40px;text-align:center;border-top:4px solid var(--main)}
+.c-box .lb{font-size:15px;font-weight:900;margin-bottom:8px}
+.c-box .big{display:block;font-family:var(--en);font-weight:600;font-size:clamp(34px,4vw,50px);line-height:1.2;color:var(--key);margin-bottom:10px;word-break:break-all}
+.c-box .big.mail{font-family:var(--jp);font-size:clamp(22px,2.4vw,28px);font-weight:900;margin:14px 0}
+.c-box p{font-size:14px;color:var(--sub);margin-bottom:22px}
+.tpl{margin-top:28px;background:#fff;padding:32px 40px}
+.tpl h3{font-size:16px;font-weight:900;margin-bottom:14px}
+.tpl pre{white-space:pre-wrap;font-family:var(--jp);font-size:14px;line-height:2;background:var(--gray);padding:20px 24px}
+.tpl .note{margin-top:12px}
 
-footer{background:var(--dark2);color:var(--dsub);padding:40px 0 44px;font-size:12px;line-height:2}
-.ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px}
-.ft b{color:#fff;font-size:14px;display:block;margin-bottom:4px}
+footer{background:var(--main-d);color:rgba(255,255,255,.72);padding:56px 0 40px;font-size:13px}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px 48px;align-items:flex-start}
+.ft .logo b{color:#fff}
+.ft .logo small{color:rgba(255,255,255,.6)}
+.ft .logo i{background:#fff;color:var(--main-d)}
+.ft p{line-height:2;margin-top:14px}
 .ft a{color:#fff}
+.fnav{display:grid;grid-template-columns:repeat(4,auto);gap:10px 32px;font-weight:700;color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.14);margin-top:36px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px}
 
 .mbar{display:none}
 
-/* ---------- responsive ---------- */
-@media (max-width:1000px){
+/* ============ responsive ============ */
+@media (max-width:1100px){
   .gnav{display:none}
-  .row{grid-template-columns:1fr;gap:28px}
-  .idx{position:static;display:flex;gap:14px;align-items:baseline}
-  .idx b{display:inline;margin:0}
-  .hero-grid{grid-template-columns:1fr;gap:48px}
-  .hero-img img{aspect-ratio:16/10}
-  .tblock{grid-template-columns:1fr 1fr}
-  .tblock div:nth-child(2){border-right:0}
-  .tblock div:nth-child(-n+2){border-bottom:1px solid var(--ink)}
+  .feat ul{grid-template-columns:1fr 1fr}
+  .feat li:nth-child(2){border-right:0}
+  .feat li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .cases{grid-template-columns:1fr 1fr}
   .works{grid-template-columns:repeat(3,1fr)}
-  .cta-grid,.q-split,.q-cols,.flow-split,.profile,.co-grid{grid-template-columns:1fr;gap:40px}
-  .flow-split img{aspect-ratio:16/10}
-  .proc ul{grid-template-columns:repeat(3,1fr)}
-  .needs-grid{grid-template-columns:1fr 1fr}
+  .checks{grid-template-columns:1fr 1fr}
+  .needs{grid-template-columns:1fr}
+  .needs .ph img{min-height:0;aspect-ratio:16/8}
+  .msg{grid-template-columns:1fr}
+  .msg .ph{height:360px}
+  .msg .bd{padding:72px 32px}
+  .fnav{grid-template-columns:repeat(2,auto)}
 }
-@media (max-width:720px){
+@media (max-width:760px){
   .wrap{padding:0 16px}
+  .hd{padding-right:16px}
   body{font-size:15px}
-  section{padding:80px 0}
-  .cases{padding:80px 0 0}
-  .hd{height:60px}
-  .brand b{font-size:17px}
-  .brand span{font-size:12px;padding-left:10px}
-  .hd-tel{display:none}
-  .hd .btn{display:none}
-  .hero{padding:44px 0 0}
-  .kicker{margin-bottom:20px;font-size:11px;letter-spacing:.03em}
-  .kicker:before{width:20px;margin-right:8px}
-  .hero h1{margin-bottom:22px}
-  .hero .sub{font-size:15px;margin-bottom:28px}
-  .hero-cta{gap:20px}
-  .tblock{margin-top:56px}
-  .tblock div{padding:14px 16px}
-  .tblock dd{font-size:14px}
-  .case-list li{grid-template-columns:40px 1fr;gap:6px 12px;padding:22px 0}
-  .case-list p{grid-column:2}
-  .svc li{grid-template-columns:48px 1fr;gap:8px 12px;padding:28px 0}
-  .svc .n{font-size:24px}
-  .svc .items{grid-column:2;margin-top:8px}
-  .band-img{margin-top:48px}
-  .band-img img{aspect-ratio:16/10}
-  .proc ul{grid-template-columns:1fr 1fr}
-  .proc li{font-size:13px;padding:10px 12px}
-  .spec>div{grid-template-columns:1fr;gap:8px;padding:22px 0}
-  .works{grid-template-columns:1fr 1fr}
-  .works div{padding:18px 14px 22px;min-height:0}
-  .works .n{margin-bottom:14px}
+  section{padding:72px 0}
+  .hd{height:62px}
+  .logo i{width:34px;height:34px;font-size:19px}
+  .logo b{font-size:15px}
+  .logo small{font-size:10px}
+  .hd-tel,.hd-btn{display:none}
+  .hero{min-height:0;height:auto;max-height:none;padding:130px 0 120px}
+  .hero .wrap{padding-top:0}
+  .hero:before{background:linear-gradient(180deg,rgba(var(--rgb),.55) 0%,rgba(var(--rgb),.88) 55%,rgba(var(--rgb),.95) 100%)}
+  .hero-en{font-size:12px;letter-spacing:.14em}
+  .hero .sub{font-size:15px}
+  .hero .btn{min-width:0;width:100%}
+  .hero-big{display:none}
+  .feat{margin-top:-60px}
+  .feat li{padding:20px 16px}
+  .feat b{font-size:34px}
+  .feat b small{font-size:14px}
+  .feat span{font-size:12px}
+  .sec-first{padding-top:130px}
+  .ttl{margin-bottom:32px}
+  .ttl-row{grid-template-columns:1fr;gap:18px;margin-bottom:36px}
+  .ttl h2{font-size:16px}
+  .cases{grid-template-columns:1fr;gap:14px}
+  .cases li{padding:26px 22px}
+  .svc{grid-template-columns:1fr;gap:18px}
+  .svc li{padding:30px 22px 26px}
+  .svc .n{font-size:50px;right:20px;top:22px}
+  .proc{padding:26px 20px;margin-top:36px}
+  .tags span{font-size:13px;padding:5px 12px}
+  .banner{height:320px}
+  .spec,.spec tbody,.spec tr,.spec th,.spec td{display:block;width:100%}
+  .spec th{padding:14px 18px}
+  .spec td{padding:18px;border-top:0}
+  .works{grid-template-columns:1fr 1fr;gap:10px}
+  .works div{padding:20px 16px 18px}
+  .works .n{font-size:22px;margin-bottom:10px}
   .works h3{font-size:15px}
-  .cta-band{padding:64px 0}
-  .cta-act .tel{font-size:28px}
-  .pr{grid-template-columns:1fr}
-  .pr div,.pr div:nth-child(2n){padding:30px 0 32px;border-left:0}
-  .checks{grid-template-columns:1fr}
-  .needs{margin-top:64px}
-  .needs-grid div{padding:18px 14px}
-  .msg-band img{height:440px}
-  .co dl>div{grid-template-columns:96px 1fr;gap:12px}
-  .c-grid{grid-template-columns:1fr}
-  .c-grid>div,.c-grid>div+div{padding:28px 0 32px;border-left:0}
-  .tpl{padding:22px 18px}
-  .tpl pre{font-size:12px}
-  .faq summary{grid-template-columns:32px 1fr 20px;font-size:15px}
-  .faq .a{grid-template-columns:32px 1fr;padding-right:0;font-size:14px}
-  body{padding-bottom:64px}
-  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--paper);border-top:1px solid var(--ink)}
-  .mbar a{display:flex;align-items:center;justify-content:center;height:56px;font-weight:700;font-size:14px;letter-spacing:.06em}
-  .mbar .t{color:var(--ink)}
-  .mbar .m{background:var(--acc);color:#fff}
+  .cta{padding:64px 0}
+  .cta:after{font-size:110px}
+  .cta .wrap{grid-template-columns:1fr;gap:28px}
+  .cta-tel{padding:14px 18px}
+  .cta-tel b{font-size:26px}
+  .pr{grid-template-columns:1fr;gap:16px}
+  .pr li{grid-template-columns:1fr;gap:10px;padding:28px 22px}
+  .pr .n{font-size:46px}
+  .q-top{grid-template-columns:1fr;gap:28px;margin-bottom:48px}
+  .arrows{grid-template-columns:1fr;gap:4px;margin-bottom:48px}
+  .arrows div,.arrows div:first-child{clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),50% 100%,0 calc(100% - 16px));padding:20px 22px 34px}
+  .checks{grid-template-columns:1fr 1fr;gap:8px}
+  .checks li{padding:14px 12px;font-size:13px}
+  .q-cols{grid-template-columns:1fr;gap:16px}
+  .q-box{padding:24px 20px}
+  .honest{grid-template-columns:1fr;gap:10px;padding:22px 20px}
+  .honest b{border-right:0;padding-right:0}
+  .steps{grid-template-columns:1fr;gap:34px;margin-bottom:48px}
+  .steps li{padding:0 22px 24px}
+  .steps li:not(:last-child):after{right:auto;left:50%;top:auto;bottom:-28px;transform:translateX(-50%);border-left:12px solid transparent;border-right:12px solid transparent;border-top:14px solid var(--hl);border-bottom:0}
+  .needs .bd{padding:28px 20px}
+  .needs-grid{grid-template-columns:1fr}
+  .msg .ph{height:260px}
+  .msg .bd{padding:56px 16px}
+  .faq summary{grid-template-columns:36px 1fr 16px;gap:12px;padding:14px 16px;font-size:15px}
+  .faq summary:before,.faq .a:before{width:36px;height:36px;font-size:17px}
+  .faq .a{grid-template-columns:36px 1fr;gap:12px;padding:0 16px 18px;font-size:14px}
+  .faq .a p{padding-top:5px}
+  .co-grid{grid-template-columns:1fr;gap:36px}
+  .co th{width:96px;padding:14px 12px}
+  .co td{padding:14px 12px}
+  .c-grid{grid-template-columns:1fr;gap:16px}
+  .c-box{padding:32px 20px}
+  .tpl{padding:24px 18px}
+  .tpl pre{font-size:13px;padding:16px}
+  body{padding-bottom:62px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;box-shadow:0 -2px 12px rgba(0,0,0,.12)}
+  .mbar a{display:flex;align-items:center;justify-content:center;height:62px;font-weight:700;font-size:15px}
+  .mbar .t{background:#fff;color:var(--key)}
+  .mbar .m{background:var(--btn);color:var(--btn-fg)}
 }
 </style>
 </head>
@@ -330,391 +383,370 @@ footer{background:var(--dark2);color:var(--dsub);padding:40px 0 44px;font-size:1
 
 <header>
   <div class="wrap hd">
-    <a class="brand" href="#top"><b>N.Start</b><span>加工事業部</span></a>
+    <a class="logo" href="#top"><i>N</i><span><b>株式会社N.Start 加工事業部</b><small>金属加工・製造まわりの相談窓口｜大阪・富田林</small></span></a>
     <nav class="gnav">
-      <a href="#service">仕事の範囲</a>
+      <a href="#service">事業内容</a>
       <a href="#spec">対応範囲</a>
-      <a href="#quality">品質</a>
+      <a href="#quality">品質管理</a>
       <a href="#flow">ご依頼の流れ</a>
       <a href="#company">会社概要</a>
     </nav>
     <div class="hd-r">
-      <a class="hd-tel" href="tel:0721687577">0721-68-7577</a>
-      <a class="btn btn-ink btn-sm" href="#contact">お見積り・ご相談</a>
+      <a class="hd-tel" href="tel:0721687577"><b>0721-68-7577</b><small>平日受付・法人窓口</small></a>
+      <a class="hd-btn" href="#contact">お見積り・ご相談</a>
     </div>
   </div>
 </header>
 
 <main id="top">
 
-<!-- ============ HERO ============ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="kicker">OSAKA / TONDABAYASHI — 金属加工の相談窓口</p>
-      <h1>金属加工を、<br>図面から納品まで<br><em>ひとつの窓口で。</em></h1>
-      <p class="sub">旋盤・フライス・穴あけ・ねじ加工から、組立・塗装、外注先の手配、検査・梱包出荷まで。製造現場で20年働いた代表が、発注する側の目で全体をまとめます。</p>
-      <div class="hero-cta">
-        <a class="btn btn-ink" href="#contact">お見積り・ご相談（無料）</a>
-        <a class="hero-tel" href="tel:0721687577"><small>お電話（平日・法人窓口）</small><b>0721-68-7577</b></a>
-      </div>
-    </div>
-    <figure class="hero-img">
-      <img src="img/hero-lathe.jpg" alt="旋盤で金属部品を加工しているところ（イメージ）" loading="eager" width="1600" height="900">
-      <figcaption>IMAGE</figcaption>
-    </figure>
-  </div>
+  <img src="img/hero-lathe.jpg" alt="旋盤で金属部品を加工しているところ（イメージ）" width="1600" height="900" loading="eager">
   <div class="wrap">
-    <dl class="tblock">
-      <div><dt>LOT</dt><dd>1個から量産まで</dd></div>
-      <div><dt>MATERIAL</dt><dd>ステンレス・難削材ほか</dd></div>
-      <div><dt>INSPECTION</dt><dd>受入・完了・出荷の3段階</dd></div>
-      <div><dt>ESTIMATE</dt><dd>お見積り無料・図面なし可</dd></div>
-    </dl>
-  </div>
-</section>
-
-<!-- ============ 00 CASES ============ -->
-<section class="cases">
-  <div class="wrap row">
-    <p class="idx"><b>00</b>WHEN</p>
-    <div>
-      <h2>こんなときに、声をかけてください。</h2>
-      <p class="intro">加工の話でも、手配の話でも、現場の話でも構いません。</p>
-      <ul class="case-list">
-        <li><span class="n">01</span><h3>この部品、どこに頼めばいいか分からない</h3><p>加工の種類が分からない、工程がいくつもある、材質が特殊。まず当社が内容を整理し、頼み先を決めます。</p></li>
-        <li><span class="n">02</span><h3>1個だけなので、断られてしまう</h3><p>試作品、壊れた部品の代替、設備の補修部品。単品・少量こそ、当社が受け止めます。</p></li>
-        <li><span class="n">03</span><h3>旋盤・穴あけ・塗装を別々に頼むのが大変</h3><p>複数工程・複数の外注先をまとめて手配。お客様の窓口は当社ひとつになります。</p></li>
-        <li><span class="n">04</span><h3>長年の加工先が廃業・縮小してしまった</h3><p>図面と現物があれば引き継げます。従来品の再製作、追加工、代替材の相談まで対応します。</p></li>
-        <li><span class="n">05</span><h3>納品後の品質トラブルを減らしたい</h3><p>受入・完了・出荷の3段階で当社が検査。ご要望があれば検査成績書を添えて納品します。</p></li>
-        <li><span class="n">06</span><h3>現場の手順書や検査基準が整っていない</h3><p>工場長として現場を回してきた経験から、工程管理表・検査基準・梱包標準づくりをお手伝いします。</p></li>
-      </ul>
+    <p class="hero-en">MACHINING / ASSEMBLY / INSPECTION</p>
+    <h1>金属加工を、<br>図面から納品まで<br>ひとつの窓口で。</h1>
+    <p class="sub">旋盤・フライス・穴あけ・ねじ加工から、組立・塗装、外注先の手配、検査・梱包出荷まで。製造現場で20年働いた代表が、発注する側の目で全体をまとめます。</p>
+    <div class="hero-cta">
+      <a class="btn btn-key" href="#contact">無料でお見積り・ご相談</a>
+      <a class="btn btn-outline" href="tel:0721687577">0721-68-7577（平日）</a>
     </div>
   </div>
+  <div class="hero-big">N.START</div>
 </section>
 
-<!-- ============ 01 SERVICE ============ -->
+<div class="feat">
+  <div class="wrap">
+    <ul>
+      <li><b>1<small>個から</small></b><span>単品・試作から<br>量産まで対応</span></li>
+      <li><b>3<small>段階検査</small></b><span>受入・完了・出荷を<br>当社が自ら検査</span></li>
+      <li><b>20<small>年</small></b><span>代表の<br>製造現場での経験</span></li>
+      <li><b>0<small>円</small></b><span>お見積り・ご相談<br>図面がなくても可</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- CASES -->
+<section class="sec-first">
+  <div class="wrap">
+    <div class="ttl-row">
+      <div class="ttl"><span class="en">Consultation</span><h2>こんなときにご相談ください</h2></div>
+      <p class="lead">加工の話でも、手配の話でも、現場の話でも構いません。ひとつでも当てはまれば、まずはお問い合わせください。</p>
+    </div>
+    <ul class="cases">
+      <li><span class="n">CASE 01</span><h3>この部品、どこに頼めばいいか分からない</h3><p>加工の種類が分からない、工程がいくつもある、材質が特殊。まず当社が内容を整理し、頼み先を決めます。</p></li>
+      <li><span class="n">CASE 02</span><h3>1個だけなので、断られてしまう</h3><p>試作品、壊れた部品の代替、設備の補修部品。単品・少量こそ、当社が受け止めます。</p></li>
+      <li><span class="n">CASE 03</span><h3>旋盤・穴あけ・塗装を別々に頼むのが大変</h3><p>複数工程・複数の外注先をまとめて手配。お客様の窓口は当社ひとつになります。</p></li>
+      <li><span class="n">CASE 04</span><h3>長年の加工先が廃業・縮小してしまった</h3><p>図面と現物があれば引き継げます。従来品の再製作、追加工、代替材の相談まで対応します。</p></li>
+      <li><span class="n">CASE 05</span><h3>納品後の品質トラブルを減らしたい</h3><p>受入・完了・出荷の3段階で当社が検査。ご要望があれば検査成績書を添えて納品します。</p></li>
+      <li><span class="n">CASE 06</span><h3>現場の手順書や検査基準が整っていない</h3><p>工場長として現場を回してきた経験から、工程管理表・検査基準・梱包標準づくりをお手伝いします。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICE -->
 <section id="service">
-  <div class="wrap row">
-    <p class="idx"><b>01</b>SERVICE</p>
-    <div>
-      <h2>加工の前後まで、一続きで。</h2>
-      <p class="intro">「加工だけ」ではありません。加工の前後にある手配・検査・出荷・仕組みづくりまで、製造まわりをまとめてお引き受けします。</p>
-      <ul class="svc">
-        <li><span class="n">01</span><div><h3>金属加工</h3><p class="cap">単品・試作から量産まで</p></div>
-          <p class="items"><span>旋盤加工（丸物・フランジ・軸物）</span><span>フライス・マシニング加工</span><span>穴あけ・ザグリ・タップ・ねじ加工</span><span>研削、溶接・製缶、板金</span><span>熱処理・表面処理・めっき</span></p></li>
-        <li><span class="n">02</span><div><h3>組立・塗装・仕上げ</h3><p class="cap">部品を「使える状態」で納品</p></div>
-          <p class="items"><span>部品の組立・ユニット組立</span><span>塗装（下地処理〜仕上げ）</span><span>分解・清掃・再組立</span><span>支給品への追加工・仕上げ</span><span>完成品としての納品</span></p></li>
-        <li><span class="n">03</span><div><h3>外注先の手配・調達代行</h3><p class="cap">窓口をひとつに</p></div>
-          <p class="items"><span>工程ごとの協力工場の選定・発注</span><span>材料・規格品の調達</span><span>納期管理・進捗のご報告</span><span>受入検査ののち、まとめて納品</span><span>お支払い・請求も当社に一本化</span></p></li>
-        <li><span class="n">04</span><div><h3>検査・梱包・出荷／仕組みづくり</h3><p class="cap">品質と現場の土台</p></div>
-          <p class="items"><span>受入・完了・出荷の3段階検査</span><span>検査成績書の発行（ご要望時）</span><span>形状・重量に応じた梱包と出荷</span><span>工程管理表・検査基準の整備支援</span><span>計測器の管理方法のご相談</span></p></li>
-      </ul>
-      <div class="proc">
-        <h3>対応できる加工・作業</h3>
-        <ul>
-          <li>旋盤加工</li><li>NC旋盤</li><li>フライス加工</li><li>マシニング加工</li><li>穴あけ</li><li>ザグリ</li><li>タップ・ねじ加工</li><li>面取り・バリ取り</li><li>研削</li><li>ワイヤー放電</li><li>溶接</li><li>製缶・板金</li><li>曲げ</li><li>熱処理</li><li>めっき・表面処理</li><li>塗装</li><li>組立</li><li>分解・再組立</li><li>洗浄</li><li>刻印・識別表示</li><li>検査・測定</li><li>梱包・出荷</li>
-        </ul>
-        <p class="note">一覧にない加工も、まずご相談ください。当社で対応できるかどうか、できない場合はどこなら可能かを含めてお答えします。</p>
-      </div>
-    </div>
-  </div>
   <div class="wrap">
-    <figure class="band-img"><img src="img/parts-table.jpg" alt="加工を終えた金属部品が作業台に並ぶ様子（イメージ）" loading="lazy" width="1600" height="900"></figure>
-  </div>
-</section>
-
-<!-- ============ 02 SPEC ============ -->
-<section id="spec" style="padding-top:0">
-  <div class="wrap row">
-    <p class="idx"><b>02</b>CAPABILITY</p>
-    <div>
-      <h2>対応範囲</h2>
-      <p class="intro">自社設備に縛られず、案件ごとに合った協力工場を選んで手配します。だから、間口を広く持てます。</p>
-      <dl class="spec">
-        <div><dt>材質<small>MATERIAL</small></dt><dd>
-          <p class="mats"><span>炭素鋼（S45C・SS400 など）</span><span>ステンレス（SUS303・304・316 など）</span><span>鋳鋼・鋳鉄</span><span>アルミ</span><span>銅・真鍮</span><span>チタン・特殊合金（難削材）</span><span>樹脂</span></p>
-          <span class="note">主力はステンレスと特殊材（難削材）。材質が分からない場合は、現物や用途からご一緒に選定します。</span></dd></div>
-        <div><dt>サイズ<small>SIZE</small></dt><dd>手のひらに載る小物から、フォークリフトで扱う重量物、1mを超える長尺物まで。<span class="note">当社の梱包・出荷標準は「小物（おおむね2kg未満）／中物（2〜20kg）／重量物（20kg超）／長尺物（1m超）」の区分で取り扱い方を定めています。加工できる最大寸法は形状・工程によって変わるため、お見積り時に個別にお答えします。</span></dd></div>
-        <div><dt>ロット<small>LOT</small></dt><dd><b>1個から。</b>単品・試作、数個〜数十個の小ロット、繰り返しの量産まで。<span class="note">量産は初品の寸法確認（初品検査）を行ってから本数に入る進め方を基本にしています。</span></dd></div>
-        <div><dt>納期<small>LEAD TIME</small></dt><dd>案件ごとに、お見積りと同時に納期の目安をお伝えします。<span class="note">お急ぎの場合は「いつまでに必要か」を先に教えてください。工程の組み方や協力工場の選び方で対応できることがあります。難しい場合は、その旨を正直にお伝えします。</span></dd></div>
-        <div><dt>設備<small>EQUIPMENT</small></dt><dd>NC旋盤・マシニングセンタ・汎用機・研削盤・放電加工機・溶接・塗装設備などを持つ協力工場のネットワークから、案件に合わせて手配します。<span class="note">当社では受入・完了・出荷の検査、組立・分解再組立、梱包出荷を担い、計測器はブロックゲージを基準器として定期校正しています。</span></dd></div>
-        <div><dt>図面・データ<small>DRAWING</small></dt><dd>紙図面、PDF、手描きスケッチ、現物、写真のいずれでも。<span class="note">図面がない場合は、現物や用途をお聞きして、必要な情報を当社で整理します。</span></dd></div>
-        <div><dt>支給材・支給品<small>SUPPLIED</small></dt><dd>お客様支給の材料・鋳造品・半製品への加工、追加工も承ります。<span class="note">受入時に品名・数量・外観を確認し、記録します。</span></dd></div>
-      </dl>
+    <div class="ttl-row">
+      <div class="ttl"><span class="en">Service</span><h2>事業内容</h2></div>
+      <p class="lead">「加工だけ」ではありません。加工の前後にある手配・検査・出荷・仕組みづくりまで、製造まわりを一続きでお引き受けします。</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ 03 WORKS ============ -->
-<section id="examples" style="padding-top:0">
-  <div class="wrap row">
-    <p class="idx"><b>03</b>WORKS</p>
-    <div>
-      <h2>扱ってきた形と、仕事の種類</h2>
-      <p class="intro">お客様の図面や製品は掲載していません。代わりに、これまで扱ってきた「形」と「仕事の種類」でご紹介します。</p>
-      <div class="works">
-        <div><span class="n">W-01</span><h3>丸物・軸物</h3><p>旋盤による外径・内径・段付き・溝加工</p></div>
-        <div><span class="n">W-02</span><h3>フランジ・ふた物</h3><p>座面仕上げ、ボルト穴の多数あけ、ザグリ</p></div>
-        <div><span class="n">W-03</span><h3>角物・ブロック</h3><p>フライス・マシニングによる六面・ポケット加工</p></div>
-        <div><span class="n">W-04</span><h3>薄物・プレート</h3><p>変形に配慮した平面出しと穴加工</p></div>
-        <div><span class="n">W-05</span><h3>長尺物</h3><p>たわみ・振れを抑える段取りと2点以上の結束梱包</p></div>
-        <div><span class="n">W-06</span><h3>穴あけ多数</h3><p>位置・数量を図面と照合し、加工忘れを防ぐ</p></div>
-        <div><span class="n">W-07</span><h3>ねじ・タップ加工</h3><p>ねじゲージで通り・止まりを確認して出荷</p></div>
-        <div><span class="n">W-08</span><h3>組立品・ユニット</h3><p>複数部品を組み上げ、完成品として納品</p></div>
-        <div><span class="n">W-09</span><h3>塗装仕上げ品</h3><p>下地処理から塗装、乾燥後の外観確認まで</p></div>
-        <div><span class="n">W-10</span><h3>分解・清掃・再組立</h3><p>既存機器のオーバーホール的な作業</p></div>
-        <div><span class="n">W-11</span><h3>支給材への加工</h3><p>鋳造品・鍛造品・半製品の仕上げ加工</p></div>
-        <div><span class="n">W-12</span><h3>追加工・改造</h3><p>市販品や既存部品への穴追加・ねじ追加</p></div>
+    <ul class="svc">
+      <li><span class="n">01</span><h3>金属加工</h3><p class="cap">単品・試作から量産まで</p>
+        <p class="items"><span>旋盤加工（丸物・フランジ・軸物）</span><span>フライス・マシニング加工</span><span>穴あけ・ザグリ・タップ・ねじ加工</span><span>研削、溶接・製缶、板金</span><span>熱処理・表面処理・めっき</span></p></li>
+      <li><span class="n">02</span><h3>組立・塗装・仕上げ</h3><p class="cap">部品を「使える状態」で納品</p>
+        <p class="items"><span>部品の組立・ユニット組立</span><span>塗装（下地処理〜仕上げ）</span><span>分解・清掃・再組立</span><span>支給品への追加工・仕上げ</span><span>完成品としての納品</span></p></li>
+      <li><span class="n">03</span><h3>外注先の手配・調達代行</h3><p class="cap">窓口をひとつに</p>
+        <p class="items"><span>工程ごとの協力工場の選定・発注</span><span>材料・規格品の調達</span><span>納期管理・進捗のご報告</span><span>受入検査ののち、まとめて納品</span><span>お支払い・請求も当社に一本化</span></p></li>
+      <li><span class="n">04</span><h3>検査・梱包・出荷／仕組みづくり</h3><p class="cap">品質と現場の土台</p>
+        <p class="items"><span>受入・完了・出荷の3段階検査</span><span>検査成績書の発行（ご要望時）</span><span>形状・重量に応じた梱包と出荷</span><span>工程管理表・検査基準の整備支援</span><span>計測器の管理方法のご相談</span></p></li>
+    </ul>
+    <div class="proc">
+      <h3>対応できる加工・作業</h3>
+      <div class="tags">
+        <span>旋盤加工</span><span>NC旋盤</span><span>フライス加工</span><span>マシニング加工</span><span>穴あけ</span><span>ザグリ</span><span>タップ・ねじ加工</span><span>面取り・バリ取り</span><span>研削</span><span>ワイヤー放電</span><span>溶接</span><span>製缶・板金</span><span>曲げ</span><span>熱処理</span><span>めっき・表面処理</span><span>塗装</span><span>組立</span><span>分解・再組立</span><span>洗浄</span><span>刻印・識別表示</span><span>検査・測定</span><span>梱包・出荷</span>
       </div>
-      <p class="note works-note">主な分野は産業機械・配管機器・設備の部品ですが、分野は問いません。「うちの業界でも頼めるか」というご質問も歓迎です。</p>
+      <p class="note">一覧にない加工も、まずご相談ください。当社で対応できるかどうか、できない場合はどこなら可能かを含めてお答えします。</p>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="cta-band">
-  <div class="wrap cta-grid">
+<div class="banner">
+  <img src="img/parts-table.jpg" alt="加工を終えた金属部品が作業台に並ぶ様子（イメージ）" width="1600" height="900" loading="lazy">
+  <div class="wrap">
+    <p class="en">ONE WINDOW FOR MANUFACTURING</p>
+    <h2>加工の前後まで、<br>お客様の窓口はひとつ。</h2>
+  </div>
+</div>
+
+<!-- SPEC -->
+<section id="spec">
+  <div class="wrap">
+    <div class="ttl-row">
+      <div class="ttl"><span class="en">Capability</span><h2>対応範囲</h2></div>
+      <p class="lead">自社設備に縛られず、案件ごとに合った協力工場を選んで手配します。だからこそ、間口を広く持てます。</p>
+    </div>
+    <table class="spec">
+      <tr><th>材質<small>MATERIAL</small></th><td>
+        <div class="mats"><span>炭素鋼（S45C・SS400 など）</span><span>ステンレス（SUS303・304・316 など）</span><span>鋳鋼・鋳鉄</span><span>アルミ</span><span>銅・真鍮</span><span>チタン・特殊合金（難削材）</span><span>樹脂</span></div>
+        <span class="note">主力はステンレスと特殊材（難削材）。材質が分からない場合は、現物や用途からご一緒に選定します。</span></td></tr>
+      <tr><th>サイズ<small>SIZE</small></th><td>手のひらに載る小物から、フォークリフトで扱う重量物、1mを超える長尺物まで。<span class="note">当社の梱包・出荷標準は「小物（おおむね2kg未満）／中物（2〜20kg）／重量物（20kg超）／長尺物（1m超）」の区分で取り扱い方を定めています。加工できる最大寸法は形状・工程によって変わるため、お見積り時に個別にお答えします。</span></td></tr>
+      <tr><th>ロット<small>LOT</small></th><td><b>1個から。</b>単品・試作、数個〜数十個の小ロット、繰り返しの量産まで。<span class="note">量産は初品の寸法確認（初品検査）を行ってから本数に入る進め方を基本にしています。</span></td></tr>
+      <tr><th>納期<small>LEAD TIME</small></th><td>案件ごとに、お見積りと同時に納期の目安をお伝えします。<span class="note">お急ぎの場合は「いつまでに必要か」を先に教えてください。工程の組み方や協力工場の選び方で対応できることがあります。難しい場合は、その旨を正直にお伝えします。</span></td></tr>
+      <tr><th>設備<small>EQUIPMENT</small></th><td>NC旋盤・マシニングセンタ・汎用機・研削盤・放電加工機・溶接・塗装設備などを持つ協力工場のネットワークから、案件に合わせて手配します。<span class="note">当社では受入・完了・出荷の検査、組立・分解再組立、梱包出荷を担い、計測器はブロックゲージを基準器として定期校正しています。</span></td></tr>
+      <tr><th>図面・データ<small>DRAWING</small></th><td>紙図面、PDF、手描きスケッチ、現物、写真のいずれでも。<span class="note">図面がない場合は、現物や用途をお聞きして、必要な情報を当社で整理します。</span></td></tr>
+      <tr><th>支給材・支給品<small>SUPPLIED</small></th><td>お客様支給の材料・鋳造品・半製品への加工、追加工も承ります。<span class="note">受入時に品名・数量・外観を確認し、記録します。</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="bg-gray" id="examples">
+  <div class="wrap">
+    <div class="ttl-row">
+      <div class="ttl"><span class="en">Works</span><h2>対応例</h2></div>
+      <p class="lead">お客様の図面や製品は掲載していません。代わりに、これまで扱ってきた「形」と「仕事の種類」でご紹介します。</p>
+    </div>
+    <div class="works">
+      <div><span class="n">01</span><h3>丸物・軸物</h3><p>旋盤による外径・内径・段付き・溝加工</p></div>
+      <div><span class="n">02</span><h3>フランジ・ふた物</h3><p>座面仕上げ、ボルト穴の多数あけ、ザグリ</p></div>
+      <div><span class="n">03</span><h3>角物・ブロック</h3><p>フライス・マシニングによる六面・ポケット加工</p></div>
+      <div><span class="n">04</span><h3>薄物・プレート</h3><p>変形に配慮した平面出しと穴加工</p></div>
+      <div><span class="n">05</span><h3>長尺物</h3><p>たわみ・振れを抑える段取りと2点以上の結束梱包</p></div>
+      <div><span class="n">06</span><h3>穴あけ多数</h3><p>位置・数量を図面と照合し、加工忘れを防ぐ</p></div>
+      <div><span class="n">07</span><h3>ねじ・タップ加工</h3><p>ねじゲージで通り・止まりを確認して出荷</p></div>
+      <div><span class="n">08</span><h3>組立品・ユニット</h3><p>複数部品を組み上げ、完成品として納品</p></div>
+      <div><span class="n">09</span><h3>塗装仕上げ品</h3><p>下地処理から塗装、乾燥後の外観確認まで</p></div>
+      <div><span class="n">10</span><h3>分解・清掃・再組立</h3><p>既存機器のオーバーホール的な作業</p></div>
+      <div><span class="n">11</span><h3>支給材への加工</h3><p>鋳造品・鍛造品・半製品の仕上げ加工</p></div>
+      <div><span class="n">12</span><h3>追加工・改造</h3><p>市販品や既存部品への穴追加・ねじ追加</p></div>
+    </div>
+    <p class="note works-note">主な分野は産業機械・配管機器・設備の部品ですが、分野は問いません。「うちの業界でも頼めるか」というご質問も歓迎です。</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="wrap">
     <div>
-      <h2>「頼めるかどうか」の<br>確認だけでも。</h2>
+      <h2>「頼めるかどうか」の確認だけでも、<br>お気軽にどうぞ。</h2>
       <p>お見積りは無料です。図面がなくても、材質が分からなくても、内容の整理から一緒に進めます。</p>
     </div>
-    <div class="cta-act">
-      <a class="tel" href="tel:0721687577"><small>お電話（平日・法人窓口）</small>0721-68-7577</a>
-      <a class="btn btn-acc" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC">sales@n-start.jp にメール</a>
+    <div class="cta-box">
+      <a class="cta-tel" href="tel:0721687577"><small>お電話<br>平日・法人窓口</small><b>0721-68-7577</b></a>
+      <a class="btn btn-key" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC">メールでお見積り・ご相談</a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ============ 04 PRINCIPLES ============ -->
+<!-- STRENGTH -->
 <section id="why">
-  <div class="wrap row">
-    <p class="idx"><b>04</b>PRINCIPLES</p>
-    <div>
-      <h2>小さな会社の、仕事の進め方</h2>
-      <p class="intro">大きな設備や大人数はありません。その代わり、発注する側の目で全体を見る人間が、最初から最後まで窓口に立ちます。</p>
-      <div class="pr">
-        <div><span class="n">— 01</span><h3>製造現場20年の代表が、直接窓口に立つ</h3><p>産業機器メーカーで20年、うち15年を製造部長・工場長として、図面を読み、外注先を選び、納期と品質を管理してきました。「この図面はどこで、どう作るのが正解か」を発注側の立場で判断します。</p></div>
-        <div><span class="n">— 02</span><h3>加工の前後まで、窓口はひとつ</h3><p>旋盤→穴あけ→塗装→組立のように工程が分かれても、協力工場の選定・発注・納期管理・受入検査・梱包出荷を当社がまとめます。お客様の手間は「当社に頼む」の1回だけです。</p></div>
-        <div><span class="n">— 03</span><h3>外注先任せにせず、当社が3段階で検査する</h3><p>受入時・加工完了時・出荷時の3回、当社が自分の目と計測器で確認します。協力工場の検査をもって当社の検査に代えることはしません。ご要望があれば検査成績書を発行します。</p></div>
-        <div><span class="n">— 04</span><h3>できないことは、できないと言う</h3><p>精度・納期・価格のどれかが成り立たないときは、引き受ける前に正直にお伝えし、代わりの方法や、他に頼める先の考え方までご提案します。曖昧なまま作業を始めないことが、当社の社内標準の第一条です。</p></div>
-      </div>
+  <div class="wrap">
+    <div class="ttl-row">
+      <div class="ttl"><span class="en">Strength</span><h2>当社の強み</h2></div>
+      <p class="lead">大きな設備や大人数はありません。その代わり、発注する側の目で全体を見る人間が、最初から最後まで窓口に立ちます。</p>
     </div>
+    <ul class="pr">
+      <li><span class="n">01</span><div><h3>製造現場20年の代表が、直接窓口に立ちます</h3><p>産業機器メーカーで20年、うち15年を製造部長・工場長として、図面を読み、外注先を選び、納期と品質を管理してきました。「この図面はどこで、どう作るのが正解か」を発注側の立場で判断します。</p></div></li>
+      <li><span class="n">02</span><div><h3>加工の前後まで、窓口はひとつ</h3><p>旋盤→穴あけ→塗装→組立のように工程が分かれても、協力工場の選定・発注・納期管理・受入検査・梱包出荷を当社がまとめます。お客様の手間は「当社に頼む」の1回だけです。</p></div></li>
+      <li><span class="n">03</span><div><h3>外注先任せにせず、当社が3段階で検査します</h3><p>受入時・加工完了時・出荷時の3回、当社が自分の目と計測器で確認します。協力工場の検査をもって当社の検査に代えることはしません。ご要望があれば検査成績書を発行します。</p></div></li>
+      <li><span class="n">04</span><div><h3>できないことは、できないと言います</h3><p>精度・納期・価格のどれかが成り立たないときは、引き受ける前に正直にお伝えし、代わりの方法や、他に頼める先の考え方までご提案します。曖昧なまま作業を始めないことが、当社の社内標準の第一条です。</p></div></li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ 05 QUALITY ============ -->
-<section id="quality" style="padding-top:0">
-  <div class="wrap row">
-    <p class="idx"><b>05</b>QUALITY</p>
-    <div>
-      <h2>品質は、文書と記録で回す。</h2>
-      <p class="intro">「気をつける」ではなく、決めた手順と残した記録で品質を保ちます。小さな会社でも、大手の製造部門と同じ考え方で運用しています。</p>
+<!-- QUALITY -->
+<section class="bg-gray" id="quality">
+  <div class="wrap">
+    <div class="q-top">
+      <div>
+        <div class="ttl"><span class="en">Quality</span><h2>品質管理</h2></div>
+        <p class="lead">品質は「気をつける」ではなく、文書と記録で回します。小さな会社でも、大手の製造部門と同じ考え方で運用しています。</p>
+      </div>
+      <img src="img/inspection.jpg" alt="ノギスで寸法を測る手元（イメージ）" width="1600" height="900" loading="lazy">
+    </div>
 
-      <div class="q-split">
-        <ul class="stages">
-          <li><span class="n">STAGE 1</span><div><b>受入検査</b><p>支給品・材料・協力工場からの受入品を、品名・数量・外観で全数確認</p></div></li>
-          <li><span class="n">STAGE 2</span><div><b>完了検査</b><p>加工完了時に、図面どおりの加工が施されているか、寸法・外観を確認</p></div></li>
-          <li><span class="n">STAGE 3</span><div><b>出荷検査</b><p>品番・数量・外観・梱包状態・同梱書類を確認し、誤出荷を防止</p></div></li>
+    <h3 class="q-h">受入 → 完了 → 出荷、3段階すべてを当社が検査</h3>
+    <div class="arrows">
+      <div><small>STEP 01</small><b>受入検査</b><p>支給品・材料・協力工場からの受入品を、品名・数量・外観で全数確認</p></div>
+      <div><small>STEP 02</small><b>完了検査</b><p>加工完了時に、図面どおりの加工が施されているか、寸法・外観を確認</p></div>
+      <div><small>STEP 03</small><b>出荷検査</b><p>品番・数量・外観・梱包状態・同梱書類を確認し、誤出荷を防止</p></div>
+    </div>
+
+    <h3 class="q-h">外観検査の8項目（機械加工品）</h3>
+    <ul class="checks">
+      <li><span>01</span>打痕・傷（機能面・シール面）</li>
+      <li><span>02</span>バリの除去</li>
+      <li><span>03</span>切りくず・異物の残留</li>
+      <li><span>04</span>加工面の状態（びびり・むしれ）</li>
+      <li><span>05</span>さび・変色、防錆処理</li>
+      <li><span>06</span>加工忘れ・誤加工（図面照合）</li>
+      <li><span>07</span>ねじ部（ねじゲージで確認）</li>
+      <li><span>08</span>識別（品名・品番・数量）</li>
+    </ul>
+    <p class="note q-note">判定は合格／保留／不合格の3区分。保留・不合格品は識別票を付けて良品と分けて保管し、処置と再発防止を記録します。</p>
+
+    <div class="q-cols">
+      <div class="q-box">
+        <h3 class="q-h">整備している社内文書</h3>
+        <ul class="docs">
+          <li>品質方針</li>
+          <li>社内標準（品質管理・作業運用）</li>
+          <li>工程管理表（手順・確認項目・記録）</li>
+          <li>機械加工 外観検査基準書</li>
+          <li>梱包・出荷標準</li>
+          <li>計測器管理・校正規程</li>
         </ul>
-        <img src="img/inspection.jpg" alt="ノギスで寸法を測る手元（イメージ）" loading="lazy" width="1600" height="900">
       </div>
-
-      <div class="sub-h"><h3>外観検査の8項目（機械加工品）</h3><span>CHECK 8</span></div>
-      <ul class="checks">
-        <li><span class="n">01</span>打痕・傷（機能面・シール面）</li>
-        <li><span class="n">02</span>バリの除去</li>
-        <li><span class="n">03</span>切りくず・異物の残留</li>
-        <li><span class="n">04</span>加工面の状態（びびり・むしれ）</li>
-        <li><span class="n">05</span>さび・変色、防錆処理</li>
-        <li><span class="n">06</span>加工忘れ・誤加工（図面照合）</li>
-        <li><span class="n">07</span>ねじ部（ねじゲージで確認）</li>
-        <li><span class="n">08</span>識別（品名・品番・数量）</li>
-      </ul>
-      <p class="note q-note">判定は合格／保留／不合格の3区分。保留・不合格品は識別票を付けて良品と分けて保管し、処置と再発防止を記録します。</p>
-
-      <div class="q-cols">
-        <div>
-          <div class="sub-h"><h3>整備している社内文書</h3><span>DOCUMENTS</span></div>
-          <ul class="docs">
-            <li>品質方針</li>
-            <li>社内標準（品質管理・作業運用）</li>
-            <li>工程管理表（手順・確認項目・記録）</li>
-            <li>機械加工 外観検査基準書</li>
-            <li>梱包・出荷標準</li>
-            <li>計測器管理・校正規程</li>
-          </ul>
-        </div>
-        <div>
-          <div class="sub-h"><h3>運用</h3><span>OPERATION</span></div>
-          <div class="q-detail">
-            <div><h4>計測器の校正</h4><p>ブロックゲージを基準器に、ノギス・マイクロメータなどを1年に1回校正。基準器そのものは外部校正機関で校正します。合格品には校正ラベル、期限切れは使用停止。</p></div>
-            <div><h4>検査成績書の発行</h4><p>ご要望に応じて、寸法測定結果と判定をまとめた検査成績書を納品時に添付します。量産品は初品の寸法測定記録から始めます。</p></div>
-            <div><h4>記録の保管</h4><p>受入・工程・最終確認・出荷の記録を3年間保管。あとから「あのときの品物は」と聞かれても、たどれる状態にしています。</p></div>
-          </div>
+      <div class="q-box">
+        <h3 class="q-h">記録と校正の運用</h3>
+        <div class="q-detail">
+          <div><h4>計測器の校正</h4><p>ブロックゲージを基準器に、ノギス・マイクロメータなどを1年に1回校正。基準器そのものは外部校正機関で校正します。合格品には校正ラベル、期限切れは使用停止。</p></div>
+          <div><h4>検査成績書の発行</h4><p>ご要望に応じて、寸法測定結果と判定をまとめた検査成績書を納品時に添付します。量産品は初品の寸法測定記録から始めます。</p></div>
+          <div><h4>記録の保管</h4><p>受入・工程・最終確認・出荷の記録を3年間保管。あとから「あのときの品物は」と聞かれても、たどれる状態にしています。</p></div>
         </div>
       </div>
-      <div class="honest"><b>正直にお伝えしておくこと</b>ISO 9001 は取得していません。その代わり、上に挙げた文書と記録を実際に運用しています。お取引先の品質保証体制調査票へのご回答、監査へのご協力も承ります。</div>
     </div>
+    <div class="honest"><b>ISOについて</b><p>ISO 9001 は取得していません。その代わり、上に挙げた文書と記録を実際に運用しています。お取引先の品質保証体制調査票へのご回答、監査へのご協力も承ります。</p></div>
   </div>
 </section>
 
-<!-- ============ 06 FLOW ============ -->
-<section id="flow" style="padding-top:0">
-  <div class="wrap row">
-    <p class="idx"><b>06</b>FLOW</p>
-    <div>
-      <h2>ご依頼の流れ</h2>
-      <p class="intro">最初の連絡から納品まで、やり取りの相手はずっと当社です。</p>
-      <div class="flow-split">
-        <ol class="steps">
-          <li><span class="n">1</span><div><h3>ご相談（無料）</h3><p>電話またはメールで、「何を・いくつ・いつまでに・どこまで（加工だけか、組立や塗装までか）」をお聞きします。図面や写真があればメールに添付してください。</p>
-            <p class="pt"><span>図面なし・現物のみでもOK</span><span>相談だけで終わっても構いません</span></p></div></li>
-          <li><span class="n">2</span><div><h3>お見積り・進め方のご提案</h3><p>内容を整理し、価格・納期の目安・工程の組み方をご提案します。分からない点、決めきれない点は、こちらから質問します。</p>
-            <p class="pt"><span>複数の進め方がある場合は選択肢で提示</span><span>難しい点があれば、この段階で正直にお伝え</span></p></div></li>
-          <li><span class="n">3</span><div><h3>製作・検査・納品</h3><p>ご発注後、協力工場への手配、進捗管理、受入・完了・出荷の3段階検査を経て、梱包し納品します。</p>
-            <p class="pt"><span>ご要望に応じて検査成績書を同梱</span><span>納品後のご質問・追加のご依頼も同じ窓口へ</span></p></div></li>
-        </ol>
-        <img src="img/drawing-meeting.jpg" alt="図面を見ながら打合せする手元（イメージ）" loading="lazy" width="1600" height="900">
-      </div>
-      <div class="needs">
-        <div class="sub-h" style="margin-bottom:0"><h3>お見積りのときに教えていただきたいこと</h3><span>4 POINTS</span></div>
+<!-- FLOW -->
+<section id="flow">
+  <div class="wrap">
+    <div class="ttl-row">
+      <div class="ttl"><span class="en">Flow</span><h2>ご依頼の流れ</h2></div>
+      <p class="lead">最初の連絡から納品まで、やり取りの相手はずっと当社です。</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">STEP 01</span><h3>ご相談（無料）</h3><p>電話またはメールで、「何を・いくつ・いつまでに・どこまで（加工だけか、組立や塗装までか）」をお聞きします。図面や写真があればメールに添付してください。</p>
+        <p class="pt"><span>図面なし・現物のみでもOK</span><span>相談だけで終わっても構いません</span></p></li>
+      <li><span class="n">STEP 02</span><h3>お見積り・進め方のご提案</h3><p>内容を整理し、価格・納期の目安・工程の組み方をご提案します。分からない点、決めきれない点は、こちらから質問します。</p>
+        <p class="pt"><span>複数の進め方がある場合は選択肢で提示</span><span>難しい点があれば、この段階で正直にお伝え</span></p></li>
+      <li><span class="n">STEP 03</span><h3>製作・検査・納品</h3><p>ご発注後、協力工場への手配、進捗管理、受入・完了・出荷の3段階検査を経て、梱包し納品します。</p>
+        <p class="pt"><span>ご要望に応じて検査成績書を同梱</span><span>納品後のご質問・追加のご依頼も同じ窓口へ</span></p></li>
+    </ol>
+    <div class="needs">
+      <div class="ph"><img src="img/drawing-meeting.jpg" alt="図面を見ながら打合せする手元（イメージ）" width="1600" height="900" loading="lazy"></div>
+      <div class="bd">
+        <h3>お見積りのときに教えていただきたいこと</h3>
+        <p class="note">4つとも揃っていなくて大丈夫です。分かる範囲でお知らせください。</p>
         <div class="needs-grid">
           <div><b>何を</b><span>図面・写真・現物・手描きスケッチのいずれか</span></div>
           <div><b>いくつ</b><span>1個でも、継続で毎月でも</span></div>
           <div><b>いつまでに</b><span>希望納期。急ぎならその旨を最初に</span></div>
           <div><b>どこまで</b><span>加工のみ／塗装・組立まで／検査成績書の要否</span></div>
         </div>
-        <p class="note">4つとも揃っていなくて大丈夫です。分かる範囲でお知らせください。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 07 MESSAGE ============ -->
-<section class="msg-band" aria-label="代表メッセージ">
-  <img src="img/workshop.jpg" alt="" loading="lazy" width="1600" height="900">
-  <div class="quote"><div class="wrap">
-    <blockquote>「どこに頼めばいいか分からない」を、<br>いちばん減らしたい。<cite>代表取締役　牛尾 健吾</cite></blockquote>
-  </div></div>
+<!-- MESSAGE -->
+<div class="msg" id="rep">
+  <div class="ph"><img src="img/workshop.jpg" alt="金属加工の作業場（イメージ）" width="1600" height="900" loading="lazy"></div>
+  <div class="bd">
+    <div class="ttl"><span class="en">Message</span><h2>代表メッセージ</h2></div>
+    <blockquote>「どこに頼めばいいか分からない」を、いちばん減らしたい仕事だと思っています。</blockquote>
+    <p>工場長をしていたころ、いちばん時間を取られたのは加工そのものではなく、「この図面はどこに頼めば安く、早く、確実か」を考え、頼み先ごとに連絡し、納期を追い、届いた品物を確かめる仕事でした。発注する側の苦労を15年分知っているので、当社はその部分ごと引き受ける窓口になろうと決めました。</p>
+    <p>お客様に大きな設備を見せることはできません。その代わり、受け取った図面を発注側の目で読み、合った作り方と頼み先を選び、届いた品物を自分の手で検査してからお渡しします。できることは引き受け、できないことは最初にお伝えします。まずは一度、お話を聞かせてください。</p>
+    <div class="sign">
+      <small>株式会社N.Start 代表取締役／加工事業部</small>
+      <b>牛尾 健吾</b>
+      <ul>
+        <li>産業機器メーカーで20年勤務</li>
+        <li>うち15年、製造部長・工場長として現場を統括</li>
+        <li>図面の読解、外注先の選定・評価、工程設計、品質・納期管理を担当</li>
+        <li>現在は自社で受入・完了・出荷の検査、組立・分解再組立、文書・記録の運用を担う</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="bg-gray" id="faq">
+  <div class="wrap">
+    <div class="ttl center"><span class="en">FAQ</span><h2>よくあるご質問</h2></div>
+    <div class="faq">
+      <details open><summary>1個だけでも頼めますか？</summary><div class="a"><p>はい、1個から承ります。試作品、壊れた部品の代替、設備の補修部品など、単品のご依頼こそ歓迎です。</p></div></details>
+      <details><summary>図面がありません。現物や写真だけでも大丈夫ですか？</summary><div class="a"><p>大丈夫です。現物・写真・手描きスケッチをもとに、必要な寸法や仕様を当社で整理してからお見積りします。図面の作成が必要な場合は、その旨と進め方をご提案します。</p></div></details>
+      <details><summary>専門用語が分かりません。それでも相談できますか？</summary><div class="a"><p>もちろんです。「ここに穴を増やしたい」「この部品を同じものにしたい」といった言葉で十分です。加工方法や材質の呼び方は、こちらで置き換えてご説明します。</p></div></details>
+      <details><summary>お見積りは本当に無料ですか？相談だけでも構いませんか？</summary><div class="a"><p>無料です。ご相談だけで終わっても費用はいただきません。「頼めるかどうかの確認だけ」でもお気軽にどうぞ。</p></div></details>
+      <details><summary>どんな材質に対応できますか？</summary><div class="a"><p>炭素鋼、ステンレス、鋳鋼・鋳鉄、アルミ、銅・真鍮、チタン・特殊合金（難削材）、樹脂に対応します。主力はステンレスと特殊材です。材質が分からない場合は、用途や現物からご一緒に選定します。</p></div></details>
+      <details><summary>納期はどのくらいですか？急ぎの対応はできますか？</summary><div class="a"><p>形状・工程・数量で変わるため、お見積り時に個別に目安をお伝えします。お急ぎの場合は「いつまでに必要か」を最初にお知らせください。工程の組み方や協力工場の選び方で対応できることがあります。難しい場合は、その旨を正直にお伝えします。</p></div></details>
+      <details><summary>材料や鋳造品をこちらから支給して加工だけ頼めますか？</summary><div class="a"><p>承ります。受入時に品名・数量・外観を確認して記録し、加工後は完了・出荷の検査を経て納品します。支給品に関わる不具合が見つかった場合は速やかにご報告します。</p></div></details>
+      <details><summary>検査成績書やミルシートは出せますか？</summary><div class="a"><p>検査成績書はご要望に応じて発行します（寸法測定結果と判定）。材料証明（ミルシート）は材料手配の段階で必要とお伝えいただければ、取得できるよう手配します。</p></div></details>
+      <details><summary>加工だけでなく、塗装や組立まで頼めますか？</summary><div class="a"><p>はい。加工→表面処理・塗装→組立まで一括で手配し、完成品としてお納めします。分解・清掃・再組立のご依頼も承ります。</p></div></details>
+      <details><summary>お支払い条件と請求書について教えてください</summary><div class="a"><p>銀行振込で、請求書発行日の翌月5日までのお支払いをお願いしています（振込手数料はお客様のご負担）。適格請求書発行事業者（登録番号 T5120101067599）として、インボイス対応の請求書を発行します。継続取引の条件はご相談ください。</p></div></details>
+      <details><summary>お預かりした図面や情報の取り扱いは？</summary><div class="a"><p>お見積りと製作の目的以外には使用しません。協力工場へ渡す情報も必要な範囲に限ります。秘密保持契約が必要な場合は、お取引前に締結します。</p></div></details>
+      <details><summary>ISOは取得していますか？</summary><div class="a"><p>ISO 9001 は取得していません。品質方針・社内標準・工程管理表・外観検査基準・梱包出荷標準・計測器校正規程を整備し、記録を3年間保管する運用をしています。品質保証体制調査票へのご回答も承ります。</p></div></details>
+      <details><summary>個人でも依頼できますか？</summary><div class="a"><p>当窓口は法人・事業者様向けです。個人の方のご依頼は内容によりますので、まずメールでご相談ください。</p></div></details>
+    </div>
+  </div>
 </section>
 
-<section id="rep">
-  <div class="wrap row">
-    <p class="idx"><b>07</b>MESSAGE</p>
-    <div class="profile">
-      <div>
-        <p class="role">株式会社N.Start 代表取締役／加工事業部</p>
-        <p class="name">牛尾 健吾</p>
-        <ul class="career">
-          <li>産業機器メーカーで20年勤務</li>
-          <li>うち15年、製造部長・工場長として現場を統括</li>
-          <li>図面の読解、外注先の選定・評価、工程設計、品質・納期管理を担当</li>
-          <li>現在は自社で受入・完了・出荷の検査、組立・分解再組立、文書・記録の運用を担う</li>
-        </ul>
+<!-- COMPANY -->
+<section id="company">
+  <div class="wrap">
+    <div class="ttl"><span class="en">Company</span><h2>お取引条件・会社概要</h2></div>
+    <div class="co-grid">
+      <div class="co">
+        <h3>お取引条件</h3>
+        <table>
+          <tr><th>お見積り</th><td>無料。ご相談のみでも費用はかかりません</td></tr>
+          <tr><th>対応ロット</th><td>1個から。単品・試作〜量産</td></tr>
+          <tr><th>お支払い</th><td>銀行振込。請求書発行日の翌月5日まで（振込手数料はお客様負担）</td></tr>
+          <tr><th>請求書</th><td>適格請求書（インボイス）対応　登録番号 T5120101067599</td></tr>
+          <tr><th>検査</th><td>受入・完了・出荷の3段階で当社が実施。検査成績書はご要望に応じ発行</td></tr>
+          <tr><th>記録保管</th><td>3年間</td></tr>
+          <tr><th>機密</th><td>図面・情報は見積・製作目的以外に使用しません。秘密保持契約はご相談ください</td></tr>
+        </table>
       </div>
-      <div class="txt">
-        <p>工場長をしていたころ、いちばん時間を取られたのは加工そのものではなく、「この図面はどこに頼めば安く、早く、確実か」を考え、頼み先ごとに連絡し、納期を追い、届いた品物を確かめる仕事でした。発注する側の苦労を15年分知っているので、当社はその部分ごと引き受ける窓口になろうと決めました。</p>
-        <p>お客様に大きな設備を見せることはできません。その代わり、受け取った図面を発注側の目で読み、合った作り方と頼み先を選び、届いた品物を自分の手で検査してからお渡しします。できることは引き受け、できないことは最初にお伝えします。まずは一度、お話を聞かせてください。</p>
+      <div class="co">
+        <h3>会社概要</h3>
+        <table>
+          <tr><th>社名</th><td>株式会社N.Start（エヌスタート）加工事業部</td></tr>
+          <tr><th>代表者</th><td>代表取締役　牛尾 健吾</td></tr>
+          <tr><th>所在地</th><td>〒584-0014<br>大阪府富田林市川面町2丁目6-12</td></tr>
+          <tr><th>電話</th><td><a href="tel:0721687577">0721-68-7577</a>（平日・法人窓口）</td></tr>
+          <tr><th>メール</th><td><a href="mailto:sales@n-start.jp">sales@n-start.jp</a></td></tr>
+          <tr><th>事業内容</th><td>金属加工の受託・手配（旋盤・フライス・穴あけ・ねじ加工ほか）、組立・塗装・分解再組立、外注先手配・調達代行、検査・梱包・出荷、製造現場の仕組みづくり支援</td></tr>
+          <tr><th>対応地域</th><td>大阪府・奈良県を中心とした近畿圏。配送での納品も承ります</td></tr>
+          <tr><th>登録</th><td>適格請求書発行事業者 T5120101067599</td></tr>
+        </table>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 08 FAQ ============ -->
-<section id="faq" style="padding-top:0">
-  <div class="wrap row">
-    <p class="idx"><b>08</b>FAQ</p>
-    <div>
-      <h2>よくあるご質問</h2>
-      <p class="intro">ここにない疑問は、電話かメールでそのままお尋ねください。</p>
-      <div class="faq">
-        <details open><summary>1個だけでも頼めますか？</summary><div class="a"><p>はい、1個から承ります。試作品、壊れた部品の代替、設備の補修部品など、単品のご依頼こそ歓迎です。</p></div></details>
-        <details><summary>図面がありません。現物や写真だけでも大丈夫ですか？</summary><div class="a"><p>大丈夫です。現物・写真・手描きスケッチをもとに、必要な寸法や仕様を当社で整理してからお見積りします。図面の作成が必要な場合は、その旨と進め方をご提案します。</p></div></details>
-        <details><summary>専門用語が分かりません。それでも相談できますか？</summary><div class="a"><p>もちろんです。「ここに穴を増やしたい」「この部品を同じものにしたい」といった言葉で十分です。加工方法や材質の呼び方は、こちらで置き換えてご説明します。</p></div></details>
-        <details><summary>お見積りは本当に無料ですか？相談だけでも構いませんか？</summary><div class="a"><p>無料です。ご相談だけで終わっても費用はいただきません。「頼めるかどうかの確認だけ」でもお気軽にどうぞ。</p></div></details>
-        <details><summary>どんな材質に対応できますか？</summary><div class="a"><p>炭素鋼、ステンレス、鋳鋼・鋳鉄、アルミ、銅・真鍮、チタン・特殊合金（難削材）、樹脂に対応します。主力はステンレスと特殊材です。材質が分からない場合は、用途や現物からご一緒に選定します。</p></div></details>
-        <details><summary>納期はどのくらいですか？急ぎの対応はできますか？</summary><div class="a"><p>形状・工程・数量で変わるため、お見積り時に個別に目安をお伝えします。お急ぎの場合は「いつまでに必要か」を最初にお知らせください。工程の組み方や協力工場の選び方で対応できることがあります。難しい場合は、その旨を正直にお伝えします。</p></div></details>
-        <details><summary>材料や鋳造品をこちらから支給して加工だけ頼めますか？</summary><div class="a"><p>承ります。受入時に品名・数量・外観を確認して記録し、加工後は完了・出荷の検査を経て納品します。支給品に関わる不具合が見つかった場合は速やかにご報告します。</p></div></details>
-        <details><summary>検査成績書やミルシートは出せますか？</summary><div class="a"><p>検査成績書はご要望に応じて発行します（寸法測定結果と判定）。材料証明（ミルシート）は材料手配の段階で必要とお伝えいただければ、取得できるよう手配します。</p></div></details>
-        <details><summary>加工だけでなく、塗装や組立まで頼めますか？</summary><div class="a"><p>はい。加工→表面処理・塗装→組立まで一括で手配し、完成品としてお納めします。分解・清掃・再組立のご依頼も承ります。</p></div></details>
-        <details><summary>お支払い条件と請求書について教えてください</summary><div class="a"><p>銀行振込で、請求書発行日の翌月5日までのお支払いをお願いしています（振込手数料はお客様のご負担）。適格請求書発行事業者（登録番号 T5120101067599）として、インボイス対応の請求書を発行します。継続取引の条件はご相談ください。</p></div></details>
-        <details><summary>お預かりした図面や情報の取り扱いは？</summary><div class="a"><p>お見積りと製作の目的以外には使用しません。協力工場へ渡す情報も必要な範囲に限ります。秘密保持契約が必要な場合は、お取引前に締結します。</p></div></details>
-        <details><summary>ISOは取得していますか？</summary><div class="a"><p>ISO 9001 は取得していません。品質方針・社内標準・工程管理表・外観検査基準・梱包出荷標準・計測器校正規程を整備し、記録を3年間保管する運用をしています。品質保証体制調査票へのご回答も承ります。</p></div></details>
-        <details><summary>個人でも依頼できますか？</summary><div class="a"><p>当窓口は法人・事業者様向けです。個人の方のご依頼は内容によりますので、まずメールでご相談ください。</p></div></details>
+<!-- CONTACT -->
+<section class="bg-gray" id="contact">
+  <div class="wrap">
+    <div class="ttl center"><span class="en">Contact</span><h2>お見積り・ご相談（無料）</h2></div>
+    <p class="lead c-lead">「これ、頼めますか？」の一言から始めてください。1個でも、図面がなくても、専門用語が分からなくても大丈夫です。</p>
+    <div class="c-grid">
+      <div class="c-box">
+        <p class="lb">お電話でのお問い合わせ</p>
+        <a class="big" href="tel:0721687577">0721-68-7577</a>
+        <p>平日受付・法人窓口<br>現場に出ていて出られない場合は折り返します</p>
+      </div>
+      <div class="c-box">
+        <p class="lb">メールでのお問い合わせ（24時間受付）</p>
+        <a class="big mail" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC">sales@n-start.jp</a>
+        <p>図面（PDF・画像・CADデータ）や現物の写真を添付してください。順次ご返信します。</p>
+        <a class="btn btn-main" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC&body=%E3%80%90%E4%BD%95%E3%82%92%E3%80%91%0A%E3%80%90%E3%81%84%E3%81%8F%E3%81%A4%E3%80%91%0A%E3%80%90%E3%81%84%E3%81%A4%E3%81%BE%E3%81%A7%E3%81%AB%E3%80%91%0A%E3%80%90%E3%81%A9%E3%81%93%E3%81%BE%E3%81%A7%EF%BC%88%E5%8A%A0%E5%B7%A5%E3%81%AE%E3%81%BF%EF%BC%8F%E5%A1%97%E8%A3%85%E3%83%BB%E7%B5%84%E7%AB%8B%E3%81%BE%E3%81%A7%EF%BC%89%E3%80%91%0A%E3%80%90%E4%BC%9A%E7%A4%BE%E5%90%8D%E3%83%BB%E3%81%8A%E5%90%8D%E5%89%8D%E3%83%BB%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%E3%80%91%0A">この内容でメールを作成する</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 09 COMPANY ============ -->
-<section id="company" style="padding-top:0">
-  <div class="wrap row">
-    <p class="idx"><b>09</b>COMPANY</p>
-    <div>
-      <h2>お取引条件・会社概要</h2>
-      <div class="co-grid">
-        <div class="co">
-          <h3>お取引条件</h3>
-          <dl>
-            <div><dt>お見積り</dt><dd>無料。ご相談のみでも費用はかかりません</dd></div>
-            <div><dt>対応ロット</dt><dd>1個から。単品・試作〜量産</dd></div>
-            <div><dt>お支払い</dt><dd>銀行振込。請求書発行日の翌月5日まで（振込手数料はお客様負担）</dd></div>
-            <div><dt>請求書</dt><dd>適格請求書（インボイス）対応　登録番号 T5120101067599</dd></div>
-            <div><dt>検査</dt><dd>受入・完了・出荷の3段階で当社が実施。検査成績書はご要望に応じ発行</dd></div>
-            <div><dt>記録保管</dt><dd>3年間</dd></div>
-            <div><dt>機密</dt><dd>図面・情報は見積・製作目的以外に使用しません。秘密保持契約はご相談ください</dd></div>
-          </dl>
-        </div>
-        <div class="co">
-          <h3>会社概要</h3>
-          <dl>
-            <div><dt>社名</dt><dd>株式会社N.Start（エヌスタート）加工事業部</dd></div>
-            <div><dt>代表者</dt><dd>代表取締役　牛尾 健吾</dd></div>
-            <div><dt>所在地</dt><dd>〒584-0014<br>大阪府富田林市川面町2丁目6-12</dd></div>
-            <div><dt>電話</dt><dd><a href="tel:0721687577">0721-68-7577</a>（平日・法人窓口）</dd></div>
-            <div><dt>メール</dt><dd><a href="mailto:sales@n-start.jp">sales@n-start.jp</a></dd></div>
-            <div><dt>事業内容</dt><dd>金属加工の受託・手配（旋盤・フライス・穴あけ・ねじ加工ほか）、組立・塗装・分解再組立、外注先手配・調達代行、検査・梱包・出荷、製造現場の仕組みづくり支援</dd></div>
-            <div><dt>対応地域</dt><dd>大阪府・奈良県を中心とした近畿圏。配送での納品も承ります</dd></div>
-            <div><dt>登録</dt><dd>適格請求書発行事業者 T5120101067599</dd></div>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section class="contact" id="contact">
-  <div class="wrap row">
-    <p class="idx"><b>10</b>CONTACT</p>
-    <div>
-      <h2>お見積り・ご相談（無料）</h2>
-      <p class="intro">「これ、頼めますか？」の一言から始めてください。1個でも、図面がなくても大丈夫です。</p>
-      <div class="c-grid">
-        <div>
-          <p class="lb">TEL — 平日・法人窓口</p>
-          <a class="big" href="tel:0721687577">0721-68-7577</a>
-          <p>現場に出ていて出られない場合は折り返します。</p>
-        </div>
-        <div>
-          <p class="lb">MAIL — 24時間受付</p>
-          <a class="big mail" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC">sales@n-start.jp</a>
-          <p>図面（PDF・画像・CADデータ）や現物の写真を添付してください。順次ご返信します。</p>
-          <a class="btn btn-acc" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC&body=%E3%80%90%E4%BD%95%E3%82%92%E3%80%91%0A%E3%80%90%E3%81%84%E3%81%8F%E3%81%A4%E3%80%91%0A%E3%80%90%E3%81%84%E3%81%A4%E3%81%BE%E3%81%A7%E3%81%AB%E3%80%91%0A%E3%80%90%E3%81%A9%E3%81%93%E3%81%BE%E3%81%A7%EF%BC%88%E5%8A%A0%E5%B7%A5%E3%81%AE%E3%81%BF%EF%BC%8F%E5%A1%97%E8%A3%85%E3%83%BB%E7%B5%84%E7%AB%8B%E3%81%BE%E3%81%A7%EF%BC%89%E3%80%91%0A%E3%80%90%E4%BC%9A%E7%A4%BE%E5%90%8D%E3%83%BB%E3%81%8A%E5%90%8D%E5%89%8D%E3%83%BB%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%E3%80%91%0A">この内容でメールを作成する</a>
-        </div>
-      </div>
-      <div class="tpl">
-        <h3>メールの書き方（コピーしてお使いください）</h3>
-        <pre>件名：見積り・相談の依頼
+    <div class="tpl">
+      <h3>メールの書き方（コピーしてお使いください）</h3>
+      <pre>件名：見積り・相談の依頼
 
 【何を】　　　例：図面添付の部品 ／ 写真の部品と同じもの ／ この部品に穴を2つ追加
 【いくつ】　　例：1個 ／ 10個 ／ 毎月50個
 【いつまでに】例：○月○日まで ／ 急ぎ ／ 特に急がない
 【どこまで】　例：加工のみ ／ 塗装・組立まで ／ 検査成績書が必要
 【会社名・お名前・電話番号】</pre>
-        <p class="note">分からない項目は空欄で構いません。こちらから確認のご連絡をします。</p>
-      </div>
+      <p class="note">分からない項目は空欄で構いません。こちらから確認のご連絡をします。</p>
     </div>
   </div>
 </section>
@@ -722,9 +754,17 @@ footer{background:var(--dark2);color:var(--dsub);padding:40px 0 44px;font-size:1
 </main>
 
 <footer>
-  <div class="wrap ft">
-    <div><b>株式会社N.Start 加工事業部</b>〒584-0014 大阪府富田林市川面町2丁目6-12<br>TEL <a href="tel:0721687577">0721-68-7577</a>（平日）　MAIL <a href="mailto:sales@n-start.jp">sales@n-start.jp</a></div>
-    <div>適格請求書発行事業者 T5120101067599<br>掲載写真はイメージです（お客様の製品・図面ではありません）<br>© N.Start Inc.</div>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="#top"><i>N</i><span><b>株式会社N.Start 加工事業部</b><small>金属加工・製造まわりの相談窓口</small></span></a>
+        <p>〒584-0014 大阪府富田林市川面町2丁目6-12<br>TEL <a href="tel:0721687577">0721-68-7577</a>（平日）　MAIL <a href="mailto:sales@n-start.jp">sales@n-start.jp</a></p>
+      </div>
+      <nav class="fnav">
+        <a href="#service">事業内容</a><a href="#spec">対応範囲</a><a href="#examples">対応例</a><a href="#quality">品質管理</a><a href="#flow">ご依頼の流れ</a><a href="#faq">よくあるご質問</a><a href="#company">会社概要</a><a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copy"><span>適格請求書発行事業者 T5120101067599　／　掲載写真はイメージです（お客様の製品・図面ではありません）</span><span>© N.Start Inc.</span></div>
   </div>
 </footer>
 
