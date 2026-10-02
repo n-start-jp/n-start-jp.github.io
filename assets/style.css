@@ -367,9 +367,27 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
 .gnav-sp{display:none}
 .fcols{display:flex;gap:56px;flex-wrap:wrap}
 .fnav-svc{grid-template-columns:repeat(1,auto)}
+.cform{margin-top:28px;background:#fff;padding:36px 40px;border-top:4px solid var(--main)}
+.cform h3{font-size:18px;font-weight:900;margin-bottom:20px}
+.cform label{display:block;font-size:14px;font-weight:700;margin-bottom:16px}
+.cform label b{display:inline-block;margin-left:8px;padding:1px 8px;font-size:11px;background:var(--main);color:#fff;vertical-align:1px}
+.cform input,.cform textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);font:inherit;font-weight:400;background:var(--gray)}
+.cform input:focus,.cform textarea:focus{outline:2px solid var(--hl);background:#fff}
+.cform input[type=file]{background:#fff;padding:10px}
+.cform .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.cform .note{margin:4px 0 20px}
+.cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cform button{border:0;cursor:pointer;font-family:inherit}
+.methods{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.methods li{background:#fff;border:1px solid var(--line);border-top:4px solid var(--main);padding:30px 28px}
+.methods .n{font-family:var(--en);font-weight:600;font-size:13px;letter-spacing:.14em;color:var(--hl-t);display:block;margin-bottom:10px}
+.methods h3{font-size:19px;font-weight:900;margin-bottom:10px}
+.methods p{font-size:14px;color:var(--sub)}
+.methods .fit{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px}
+.methods .fit b{display:block;color:var(--ink);margin-bottom:2px}
 .svc-links{margin-top:56px}
 .svc-links h3{font-size:17px;font-weight:900;margin-bottom:18px}
-.links{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .links a{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:128px;padding:22px 20px 18px;background:var(--main);color:#fff;font-weight:900;font-size:15px;line-height:1.5;transition:background .2s}
 .links a:hover{background:var(--main-d)}
 .links a small{display:block;font-family:var(--en);font-weight:600;font-size:12px;letter-spacing:.14em;color:var(--hero-en);margin-bottom:6px}
@@ -419,6 +437,7 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
   .gnav-sp .sp-tel small{display:block;font-family:var(--jp);font-size:12px;color:var(--sub);font-weight:500;margin-top:4px}
   .gnav-sp .sp-btn{margin-top:18px;border:0;background:var(--btn);color:var(--btn-fg);text-align:center;padding:18px;font-weight:700}
   .links{grid-template-columns:repeat(3,1fr)}
+  .methods{grid-template-columns:1fr 1fr}
   .rel{grid-template-columns:1fr 1fr}
   .needs-box .needs-grid{grid-template-columns:1fr 1fr}
 }
@@ -438,6 +457,10 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
   .needs-box{padding:28px 20px}
   .needs-box .needs-grid{grid-template-columns:1fr}
   .rel{grid-template-columns:1fr}
+  .cform{padding:26px 18px}
+  .cform .f-grid{grid-template-columns:1fr}
+  .methods{grid-template-columns:1fr}
+  .fnav a{display:block;padding:9px 0}
   .fcols{gap:28px}
   .nf{padding:140px 0 100px}
   .nf .en{font-size:84px}

@@ -33,14 +33,7 @@ NAV = [("/#service", "事業内容"), ("/#spec", "対応範囲"), ("/#quality", 
 
 SUBPAGES_NAV = [("/senban/", "旋盤加工"), ("/flange/", "フランジ・ふた物の加工"),
                 ("/stainless/", "ステンレス・難削材の加工"), ("/zumen-nashi/", "図面がない部品の製作"),
-                ("/hoshu/", "摩耗・破損部品の補修"), ("/tehai/", "加工外注の手配・一括発注")]
-
-# Googleアナリティクス（GA4）の測定ID。オーナーがプロパティを作成して ID（G-XXXX）を貰ったら入れる。空なら出力しない
-GA_ID = ""
-
-# 問い合わせフォーム（FormSubmit・アカウント不要。初回送信時に sales@n-start.jp へ有効化メールが届き、
-# その中の「Activate」を押すと以後届くようになる）
-FORM_ACTION = "https://formsubmit.co/sales@n-start.jp"
+                ("/tehai/", "加工外注の手配・一括発注")]
 
 HEADER = f"""<header>
   <div class="wrap hd">
@@ -101,31 +94,7 @@ HEAD_LINKS = f"""<meta property="og:site_name" content="{SITE_NAME}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">""" + (f"""
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>""" if GA_ID else "")
-
-CONTACT_FORM = f"""<form class="cform" action="{FORM_ACTION}" method="POST" enctype="multipart/form-data">
-  <h3>フォームでのお問い合わせ（図面・写真を添付できます）</h3>
-  <input type="hidden" name="_subject" value="【加工事業部サイト】お見積り・ご相談">
-  <input type="hidden" name="_next" value="https://n-start-jp.github.io/thanks/">
-  <input type="hidden" name="_template" value="table">
-  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <div class="f-grid">
-    <label>会社名<b>必須</b><input type="text" name="会社名" required autocomplete="organization"></label>
-    <label>お名前<b>必須</b><input type="text" name="お名前" required autocomplete="name"></label>
-    <label>メールアドレス<b>必須</b><input type="email" name="email" required autocomplete="email"></label>
-    <label>電話番号<input type="tel" name="電話番号" autocomplete="tel"></label>
-  </div>
-  <label>ご相談の内容<b>必須</b><textarea name="ご相談の内容" rows="6" required placeholder="例：写真の部品と同じものを1個／摩耗した軸受部を補修したい／図面添付の部品を10個"></textarea></label>
-  <div class="f-grid">
-    <label>数量<input type="text" name="数量" placeholder="例：1個／毎月50個"></label>
-    <label>ご希望の納期<input type="text" name="納期" placeholder="例：○月○日まで／急ぎ"></label>
-  </div>
-  <label>図面・写真の添付<input type="file" name="attachment" accept="image/*,.pdf,.dxf,.dwg,.zip"></label>
-  <p class="note">分からない項目は空欄で構いません。ファイルが大きい・複数ある場合は、送信後に届く当社からの返信メールに添付してください。送信内容はフォーム送信サービス（FormSubmit）を経由して当社に届き、お見積り・ご連絡の目的以外には使用しません。</p>
-  <button class="btn btn-main" type="submit">この内容で送信する</button>
-</form>"""
+<link rel="stylesheet" href="/assets/style.css">"""
 
 EXTRA_CSS = r"""
 /* ===== 共通追加（build_pages.py） ===== */
@@ -137,27 +106,9 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
 .gnav-sp{display:none}
 .fcols{display:flex;gap:56px;flex-wrap:wrap}
 .fnav-svc{grid-template-columns:repeat(1,auto)}
-.cform{margin-top:28px;background:#fff;padding:36px 40px;border-top:4px solid var(--main)}
-.cform h3{font-size:18px;font-weight:900;margin-bottom:20px}
-.cform label{display:block;font-size:14px;font-weight:700;margin-bottom:16px}
-.cform label b{display:inline-block;margin-left:8px;padding:1px 8px;font-size:11px;background:var(--main);color:#fff;vertical-align:1px}
-.cform input,.cform textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);font:inherit;font-weight:400;background:var(--gray)}
-.cform input:focus,.cform textarea:focus{outline:2px solid var(--hl);background:#fff}
-.cform input[type=file]{background:#fff;padding:10px}
-.cform .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
-.cform .note{margin:4px 0 20px}
-.cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.cform button{border:0;cursor:pointer;font-family:inherit}
-.methods{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.methods li{background:#fff;border:1px solid var(--line);border-top:4px solid var(--main);padding:30px 28px}
-.methods .n{font-family:var(--en);font-weight:600;font-size:13px;letter-spacing:.14em;color:var(--hl-t);display:block;margin-bottom:10px}
-.methods h3{font-size:19px;font-weight:900;margin-bottom:10px}
-.methods p{font-size:14px;color:var(--sub)}
-.methods .fit{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px}
-.methods .fit b{display:block;color:var(--ink);margin-bottom:2px}
 .svc-links{margin-top:56px}
 .svc-links h3{font-size:17px;font-weight:900;margin-bottom:18px}
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.links{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .links a{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:128px;padding:22px 20px 18px;background:var(--main);color:#fff;font-weight:900;font-size:15px;line-height:1.5;transition:background .2s}
 .links a:hover{background:var(--main-d)}
 .links a small{display:block;font-family:var(--en);font-weight:600;font-size:12px;letter-spacing:.14em;color:var(--hero-en);margin-bottom:6px}
@@ -207,7 +158,6 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
   .gnav-sp .sp-tel small{display:block;font-family:var(--jp);font-size:12px;color:var(--sub);font-weight:500;margin-top:4px}
   .gnav-sp .sp-btn{margin-top:18px;border:0;background:var(--btn);color:var(--btn-fg);text-align:center;padding:18px;font-weight:700}
   .links{grid-template-columns:repeat(3,1fr)}
-  .methods{grid-template-columns:1fr 1fr}
   .rel{grid-template-columns:1fr 1fr}
   .needs-box .needs-grid{grid-template-columns:1fr 1fr}
 }
@@ -227,10 +177,6 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
   .needs-box{padding:28px 20px}
   .needs-box .needs-grid{grid-template-columns:1fr}
   .rel{grid-template-columns:1fr}
-  .cform{padding:26px 18px}
-  .cform .f-grid{grid-template-columns:1fr}
-  .methods{grid-template-columns:1fr}
-  .fnav a{display:block;padding:9px 0}
   .fcols{gap:28px}
   .nf{padding:140px 0 100px}
   .nf .en{font-size:84px}
@@ -391,34 +337,6 @@ SUBPAGES = [
        ("加工先が廃業してしまいました。同じものを作れますか？", "図面と現物があれば引き継げます。図面がない場合も、現物から必要な情報を整理してご相談に乗ります。"),
        ("相談だけでも構いませんか？", "構いません。ご相談だけで終わっても費用はいただきません。「頼めるかどうかの確認だけ」でもお気軽にどうぞ。")]),
 
- dict(slug="hoshu", img="inspection", img_alt="ノギスで寸法を測る手元（イメージ）",
-  title="摩耗・破損部品の補修｜ブッシュ圧入・肉盛り溶接・軸の作り直し｜大阪 N.Start加工事業部",
-  desc="軸受部（ベアリングハウジング）の内径摩耗、シャフトの摩耗・破損などの補修を1個から。ブッシュ圧入、肉盛り溶接＋再加工、シャフト・軸の作り直しから、材質と形状に合った方法をご提案します。現物・写真からご相談いただけます。大阪府富田林市。",
-  en="REPAIR", h1="摩耗・破損部品の補修", crumb="摩耗・破損部品の補修",
-  sub="すり減った軸受部、傷んだシャフト。新しく作り直すか、補修で直すかを、現物を見てご提案します。",
-  ov_h2="こんな傷みを直します",
-  ov_lead="設備の部品は、使っているうちに軸受部の穴が広がったり、シャフトがすり減ったりします。メーカーの部品が手に入らない、作り直すと高くつく、という部品でも、補修で使える状態に戻せることがあります。材質・形状・傷み方を見て、方法をご提案します。",
-  cards=[("軸受部（ベアリングハウジング）の内径摩耗", "ベアリングの外輪がはまる穴が広がり、ガタが出ている。"),
-         ("ブッシュの摩耗・ガタ", "以前ブッシュで直した箇所が、また摩耗してきた。"),
-         ("シャフト・軸の摩耗", "ベアリングやシールが当たる部分がすり減っている。"),
-         ("シャフトの破損・曲がり", "折れた・曲がった軸を、現物から作り直したい。"),
-         ("メーカー部品が手に入らない", "古い設備で、純正部品の供給が終わっている。"),
-         ("1個だけ直したい", "補修は1個からお受けします。")],
-  methods=[("METHOD 01", "ブッシュ圧入", "摩耗して広がった穴を削り直して寸法を整え、ブッシュ（筒状の部品）を圧入して元の寸法に戻します。",
-            "ハウジングの内径摩耗、穴のガタ。溶接の熱を避けたい材質"),
-           ("METHOD 02", "肉盛り溶接＋再加工", "すり減った部分に溶接で金属を盛り、旋盤などで削って元の寸法に仕上げます。",
-            "シャフトの摩耗部、キー溝まわりの傷み。溶接できる材質"),
-           ("METHOD 03", "シャフト・軸の作り直し", "傷み方が大きいときや、補修より作り直したほうが確実なときは、現物から寸法を取って新しく製作します。",
-            "破損・曲がり、摩耗が大きい軸。図面がない場合も現物から")],
-  spec=[("お手元にあるもの", "MATERIALS", "現物、写真、古い図面など。ベアリングの型番が分かれば、あわせてお知らせください。"),
-        ("方法の選び方", "SELECTION", "材質（鋳物・鋼・ステンレスなど）、形状、傷み方、使う条件を見て、補修か作り直しかを含めてご提案します。<span class=\"note\">材質によって向かない方法があります。その場合は理由とあわせて正直にお伝えします。</span>"),
-        ("ロット", "LOT", "<b>1個から。</b>"),
-        ("検査", "INSPECTION", "仕上がり寸法を当社が確認してからお納めします。<span class=\"note\">検査成績書（寸法測定結果と判定）はご要望に応じて発行します。</span>"),
-        ("対応地域", "AREA", "大阪府・奈良県を中心とした近畿圏。配送での受け渡しも承ります。")],
-  faq=[("写真だけで、補修できるか分かりますか？", "写真と、傷んでいる箇所・材質（分かる範囲で）・ベアリングの型番などをお知らせください。写真だけでは判断できない場合は、現物を確認してからご提案します。"),
-       ("補修と作り直し、どちらがいいですか？", "傷み方・材質・数量・納期で変わります。両方の方法と、それぞれの注意点をお伝えしたうえで、選んでいただけます。"),
-       ("以前ブッシュで直した箇所が、また摩耗しました。", "ご相談ください。前回の補修の状態を見て、同じ方法で直すか、別の方法にするかをご提案します。"),
-       ("見積りだけでも構いませんか？", "構いません。お見積りは無料です。当社で対応できない内容でも、協力工場のネットワークを使って、対応できる先をお探しします。")]),
  dict(slug="tehai", img="packing", img_alt="木枠パレットに固定した梱包（イメージ）",
   title="加工外注の手配代行・一括発注｜複数工程を窓口ひとつで｜大阪 N.Start加工事業部",
   desc="旋盤・フライス・穴あけ・研削など、工程ごとに分かれる加工外注を当社が一括で手配。協力工場の選定・発注・納期管理・受入検査・梱包出荷、請求まで窓口はひとつ。製造部長・工場長として外注管理を担ってきた代表が対応します。大阪府富田林市。",
@@ -492,11 +410,6 @@ def subpage(p):
         rows = "".join(f"<tr><th>{a}</th><td>{b}</td><td>{c}</td></tr>" for a, b, c in p["cmp"])
         cmp = f"""<h3 class="q-h" style="margin-top:64px">個別に手配する場合との違い</h3>
     <table class="cmp"><thead><tr><th></th><th>工程ごとに個別に手配</th><th>当社に一括でご依頼</th></tr></thead><tbody>{rows}</tbody></table>"""
-    if p.get("methods"):
-        ms = "".join(f'<li><span class="n">{a}</span><h3>{b}</h3><p>{c}</p><p class="fit"><b>向いているもの</b>{d}</p></li>'
-                     for a, b, c, d in p["methods"])
-        cmp += f"""<h3 class="q-h" style="margin-top:64px">補修の方法</h3>
-    <ul class="methods">{ms}</ul>"""
     body = f"""<main id="top">
 
 <section class="phero">
@@ -558,27 +471,6 @@ def subpage(p):
 </html>
 """
     return head(p["title"], p["desc"], path, ld) + body
-
-
-def page_thanks():
-    ld = {"@context": "https://schema.org", **ORG}
-    return head("送信ありがとうございました｜N.Start加工事業部", "お問い合わせを受け付けました。", "/thanks/", ld).replace(
-        '<link rel="canonical" href="https://n-start-jp.github.io/thanks/">', '<meta name="robots" content="noindex">') + f"""<main>
-<section class="nf">
-  <div class="wrap">
-    <p class="en" style="font-size:64px">THANK YOU</p>
-    <h1>お問い合わせを受け付けました</h1>
-    <p>内容を確認し、担当の牛尾からご連絡いたします。<br>お急ぎの場合はお電話（{TEL}・平日）でもどうぞ。</p>
-    <a class="btn btn-main" href="/">トップページへ</a>
-  </div>
-</section>
-</main>
-
-{FOOTER}
-
-</body>
-</html>
-"""
 
 
 def page_404():
@@ -652,10 +544,6 @@ def build_index():
     s = s.replace('</div>\n  </div>\n</section>\n\n<div class="banner">', '</div>\n    ' + links + '\n  </div>\n</section>\n\n<div class="banner">', 1)
     # ページ内リンクは / 付きに統一（下層と共通化）
     s = s.replace('href="#top"', 'href="/"')
-    s = re.sub(r'\s*<form class="cform".*?</form>', "", s, flags=re.S)
-    anchor = '\n    <div class="tpl">'
-    assert s.count(anchor) == 1
-    s = s.replace(anchor, "\n    " + CONTACT_FORM.replace("\n", "\n    ") + anchor)
     wr("index.html", s)
 
 
@@ -671,6 +559,5 @@ if __name__ == "__main__":
     for p in SUBPAGES:
         wr(f"{p['slug']}/index.html", subpage(p))
     wr("404.html", page_404())
-    wr("thanks/index.html", page_thanks())
     build_sitemap()
     print("built:", ["index.html"] + [p["slug"] for p in SUBPAGES] + ["404.html", "sitemap.xml"])

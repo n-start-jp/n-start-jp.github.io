@@ -35,7 +35,7 @@
       <a href="/#service">事業内容</a><a href="/#spec">対応範囲</a><a href="/#quality">品質管理</a><a href="/#flow">ご依頼の流れ</a><a href="/#company">会社概要</a>
       <div class="gnav-sp">
         <p>サービス別のご案内</p>
-        <a href="/senban/">旋盤加工</a><a href="/flange/">フランジ・ふた物の加工</a><a href="/stainless/">ステンレス・難削材の加工</a><a href="/zumen-nashi/">図面がない部品の製作</a><a href="/tehai/">加工外注の手配・一括発注</a>
+        <a href="/senban/">旋盤加工</a><a href="/flange/">フランジ・ふた物の加工</a><a href="/stainless/">ステンレス・難削材の加工</a><a href="/zumen-nashi/">図面がない部品の製作</a><a href="/hoshu/">摩耗・破損部品の補修</a><a href="/tehai/">加工外注の手配・一括発注</a>
         <a class="sp-tel" href="tel:0721687577">0721-68-7577<small>平日受付・法人窓口</small></a>
         <a class="sp-btn" href="/#contact">無料でお見積り・ご相談</a>
       </div>
@@ -118,7 +118,7 @@
       </div>
       <p class="note">一覧にない加工も、まずご相談ください。当社で対応できない内容でも、協力工場のネットワークを使って、対応できる先をお探しします。お見積りだけでも承ります。</p>
     </div>
-    <div class="svc-links"><h3>サービス別のご案内</h3><div class="links"><a href="/senban/"><span><small>SERVICE</small>旋盤加工</span></a><a href="/flange/"><span><small>SERVICE</small>フランジ・ふた物の加工</span></a><a href="/stainless/"><span><small>SERVICE</small>ステンレス・難削材の加工</span></a><a href="/zumen-nashi/"><span><small>SERVICE</small>図面がない部品の製作</span></a><a href="/tehai/"><span><small>SERVICE</small>加工外注の手配・一括発注</span></a></div></div>
+    <div class="svc-links"><h3>サービス別のご案内</h3><div class="links"><a href="/senban/"><span><small>SERVICE</small>旋盤加工</span></a><a href="/flange/"><span><small>SERVICE</small>フランジ・ふた物の加工</span></a><a href="/stainless/"><span><small>SERVICE</small>ステンレス・難削材の加工</span></a><a href="/zumen-nashi/"><span><small>SERVICE</small>図面がない部品の製作</span></a><a href="/hoshu/"><span><small>SERVICE</small>摩耗・破損部品の補修</span></a><a href="/tehai/"><span><small>SERVICE</small>加工外注の手配・一括発注</span></a></div></div>
   </div>
 </section>
 
@@ -385,6 +385,27 @@
         <a class="btn btn-main" href="mailto:sales@n-start.jp?subject=%E8%A6%8B%E7%A9%8D%E3%82%8A%E3%83%BB%E7%9B%B8%E8%AB%87%E3%81%AE%E4%BE%9D%E9%A0%BC&body=%E3%80%90%E4%BD%95%E3%82%92%E3%80%91%0A%E3%80%90%E3%81%84%E3%81%8F%E3%81%A4%E3%80%91%0A%E3%80%90%E3%81%84%E3%81%A4%E3%81%BE%E3%81%A7%E3%81%AB%E3%80%91%0A%E3%80%90%E3%81%A9%E3%81%93%E3%81%BE%E3%81%A7%EF%BC%88%E5%8A%A0%E5%B7%A5%E3%81%AE%E3%81%BF%EF%BC%8F%E5%A1%97%E8%A3%85%E3%83%BB%E7%B5%84%E7%AB%8B%E3%81%BE%E3%81%A7%EF%BC%89%E3%80%91%0A%E3%80%90%E4%BC%9A%E7%A4%BE%E5%90%8D%E3%83%BB%E3%81%8A%E5%90%8D%E5%89%8D%E3%83%BB%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%E3%80%91%0A">この内容でメールを作成する</a>
       </div>
     </div>
+    <form class="cform" action="https://formsubmit.co/sales@n-start.jp" method="POST" enctype="multipart/form-data">
+      <h3>フォームでのお問い合わせ（図面・写真を添付できます）</h3>
+      <input type="hidden" name="_subject" value="【加工事業部サイト】お見積り・ご相談">
+      <input type="hidden" name="_next" value="https://n-start-jp.github.io/thanks/">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="f-grid">
+        <label>会社名<b>必須</b><input type="text" name="会社名" required autocomplete="organization"></label>
+        <label>お名前<b>必須</b><input type="text" name="お名前" required autocomplete="name"></label>
+        <label>メールアドレス<b>必須</b><input type="email" name="email" required autocomplete="email"></label>
+        <label>電話番号<input type="tel" name="電話番号" autocomplete="tel"></label>
+      </div>
+      <label>ご相談の内容<b>必須</b><textarea name="ご相談の内容" rows="6" required placeholder="例：写真の部品と同じものを1個／摩耗した軸受部を補修したい／図面添付の部品を10個"></textarea></label>
+      <div class="f-grid">
+        <label>数量<input type="text" name="数量" placeholder="例：1個／毎月50個"></label>
+        <label>ご希望の納期<input type="text" name="納期" placeholder="例：○月○日まで／急ぎ"></label>
+      </div>
+      <label>図面・写真の添付<input type="file" name="attachment" accept="image/*,.pdf,.dxf,.dwg,.zip"></label>
+      <p class="note">分からない項目は空欄で構いません。ファイルが大きい・複数ある場合は、送信後に届く当社からの返信メールに添付してください。送信内容はフォーム送信サービス（FormSubmit）を経由して当社に届き、お見積り・ご連絡の目的以外には使用しません。</p>
+      <button class="btn btn-main" type="submit">この内容で送信する</button>
+    </form>
     <div class="tpl">
       <h3>メールの書き方（コピーしてお使いください）</h3>
       <pre>件名：見積り・相談の依頼
@@ -413,7 +434,7 @@
           <a href="/#service">事業内容</a><a href="/#spec">対応範囲</a><a href="/#examples">対応例</a><a href="/#quality">品質管理</a><a href="/#flow">ご依頼の流れ</a><a href="/#faq">よくあるご質問</a><a href="/#company">会社概要</a><a href="/#contact">お問い合わせ</a>
         </nav>
         <nav class="fnav fnav-svc">
-          <a href="/senban/">旋盤加工</a><a href="/flange/">フランジ・ふた物の加工</a><a href="/stainless/">ステンレス・難削材の加工</a><a href="/zumen-nashi/">図面がない部品の製作</a><a href="/tehai/">加工外注の手配・一括発注</a>
+          <a href="/senban/">旋盤加工</a><a href="/flange/">フランジ・ふた物の加工</a><a href="/stainless/">ステンレス・難削材の加工</a><a href="/zumen-nashi/">図面がない部品の製作</a><a href="/hoshu/">摩耗・破損部品の補修</a><a href="/tehai/">加工外注の手配・一括発注</a>
         </nav>
       </div>
     </div>
