@@ -41,6 +41,8 @@ GA_ID = ""
 # 問い合わせフォーム（FormSubmit・アカウント不要。初回送信時に sales@n-start.jp へ有効化メールが届き、
 # その中の「Activate」を押すと以後届くようになる）
 FORM_ACTION = "https://formsubmit.co/sales@n-start.jp"
+# 2026-10-05 FormSubmit が送信・有効化リンクとも 500 を返すため停止中。復旧を確認したら True に戻す
+FORM_ENABLED = False
 
 HEADER = f"""<header>
   <div class="wrap hd">
@@ -655,7 +657,8 @@ def build_index():
     s = re.sub(r'\s*<form class="cform".*?</form>', "", s, flags=re.S)
     anchor = '\n    <div class="tpl">'
     assert s.count(anchor) == 1
-    s = s.replace(anchor, "\n    " + CONTACT_FORM.replace("\n", "\n    ") + anchor)
+    if FORM_ENABLED:
+        s = s.replace(anchor, "\n    " + CONTACT_FORM.replace("\n", "\n    ") + anchor)
     wr("index.html", s)
 
 
