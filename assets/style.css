@@ -465,3 +465,33 @@ body.nav-open .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45d
   .nf{padding:140px 0 100px}
   .nf .en{font-size:84px}
 }
+/* ===== 記事・会社概要・実績ページ（kakou additions 2026-10-22） ===== */
+.doc{max-width:860px}
+.doc .lead{font-size:17px;line-height:1.9;margin:0 0 36px}
+.doc h2{font-size:22px;line-height:1.5;margin:48px 0 16px;padding:0 0 10px;border-bottom:2px solid var(--key)}
+.doc h3{font-size:18px;margin:28px 0 10px}
+.doc p{line-height:1.9;margin:0 0 16px}
+.doc ul,.doc ol{margin:0 0 20px;padding-left:1.4em;line-height:1.9}
+.doc li{margin:0 0 6px}
+.doc ol.proc{list-style:none;padding:0;margin:0 0 24px;counter-reset:st}
+.doc ol.proc li{position:relative;padding:12px 16px 12px 56px;margin:0 0 10px;background:#fff;border:1px solid #e5e7eb;border-radius:4px;counter-increment:st;line-height:1.8}
+.doc ol.proc li::before{content:counter(st,decimal-leading-zero);position:absolute;left:14px;top:10px;font-family:'Oswald',sans-serif;font-size:22px;color:var(--key);line-height:1}
+.doc table.spec{width:100%;border-collapse:collapse;margin:0 0 24px;font-size:15px}
+.doc table.spec th,.doc table.spec td{padding:10px 12px;border:1px solid #e5e7eb;text-align:left;vertical-align:top;line-height:1.7}
+.doc table.spec th{background:#f3f4f6;color:#111827;white-space:nowrap;font-weight:700}
+.doc a{color:var(--key);font-weight:700}
+.doc .links a,.doc .links a span,.doc .links a small{color:#fff}
+.doc .meta{font-size:13px;color:#6b7280;margin:0 0 20px}
+.doc .doc-rel{margin-top:48px}
+.doc-crumb{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:#6b7280}
+.doc-crumb li+li::before{content:"›";margin-right:6px;color:#9ca3af}
+.doc-crumb a{color:#6b7280;font-weight:400;text-decoration:none}
+.doc-crumb a:hover{color:var(--key)}
+.col-list{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.col-list li{background:#fff;border:1px solid #e5e7eb;border-radius:4px;padding:20px 22px}
+.col-list li a{font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;line-height:1.5}
+.col-list li a:hover{color:var(--key)}
+.col-list li p{margin:8px 0 0;font-size:14px;line-height:1.8;color:#4b5563}
+.col-list li small{display:block;margin-top:8px;font-size:12px;color:#6b7280}
+@media (max-width:640px){.doc h2{font-size:19px}.doc .lead{font-size:16px}}
+
